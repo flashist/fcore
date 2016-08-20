@@ -1,0 +1,30 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "scripts": {
+    "tsc": "tsc --outDir build",
+    "lite:silent": "lite-server --c bs-silent.json"
+  },
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "concurrently": "^2.0.0",
+    "es6-promise": "3.2.1",
+    "eventemitter3": "^1.2.0",
+    "gulp": "3.9.1",
+    "gulp-typescript": "2.13.6",
+    "lite-server": "^2",
+    "systemjs": "0.19.31",
+    "tsd": "0.6.5",
+    "typescript": "1.8.10"
+  },
+  "devDependencies": {
+    "run-sequence": "1.2.2",
+    "map-stream": "0.0.6",
+    "path": "0.12.7",
+    "gulp-file": "0.3.0",
+    "gulp-replace": "0.5.4",
+    "vinyl-fs": "2.4.3",
+    "yargs": "5.0.0"
+  }
+}
