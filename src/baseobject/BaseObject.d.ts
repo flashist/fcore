@@ -1,4 +1,4 @@
-import {BaseEventDispatcher} from "../event/eventdispatcher/BaseEventDispatcher";
+import { BaseEventDispatcher } from "../event/eventdispatcher/BaseEventDispatcher";
 export declare class BaseObject extends BaseEventDispatcher {
     protected isConstructed: boolean;
     private _data;

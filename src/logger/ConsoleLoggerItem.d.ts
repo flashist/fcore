@@ -1,4 +1,4 @@
-import {BaseLoggerItem} from "./BaseLoggerItem";
+import { BaseLoggerItem } from "./BaseLoggerItem";
 export declare class ConsoleCustomLoggerItem extends BaseLoggerItem {
     constructor();
     log(...args: any[]): void;

@@ -1,4 +1,4 @@
-import {BaseObject} from "../../baseobject/BaseObject";
+import { BaseObject } from "../../baseobject/BaseObject";
 export declare class AssociativeArray<ValueType> extends BaseObject {
     protected map: {
         [key: string]: ValueType;

@@ -1,4 +1,4 @@
-import {BaseLoggerItem} from "./BaseLoggerItem";
+import { BaseLoggerItem } from "./BaseLoggerItem";
 export declare class Logger {
     protected static loggerItems: BaseLoggerItem[];
     protected static loggerItemsCount: number;
