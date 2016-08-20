@@ -19,7 +19,7 @@ gulp.task(
         console.log("argv.outFile: " + argv.outFile);
         argv.outFile = argv.outFile ? argv.outFile : "index.d.ts";
         console.log("argv.outDir: " + argv.outDir);
-        argv.outDir = argv.outDir ? argv.outDir : "./build/";
+        argv.outDir = argv.outDir ? argv.outDir : "./src";
 
         var resultDeclarationText = "";
         var processFile = function(file, cb) {
