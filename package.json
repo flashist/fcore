@@ -23,12 +23,13 @@
     "typescript": "1.8.10"
   },
   "devDependencies": {
-    "run-sequence": "1.2.2",
-    "map-stream": "0.0.6",
-    "path": "0.12.7",
+    "del": "2.2.2",
     "gulp-file": "0.3.0",
     "gulp-replace": "0.5.4",
+    "map-stream": "0.0.6",
+    "path": "0.12.7",
     "require-dir": "0.3.0",
+    "run-sequence": "1.2.2",
     "vinyl-fs": "2.4.3",
     "yargs": "5.0.0"
   }
