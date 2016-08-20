@@ -16,13 +16,23 @@ gulp.task(
         // Adding a closing slash to make correct folder path (if needed)
         argv.src += argv.src.charAt(argv.src.length - 1) == "/" ? "" : "/";
 
-        console.log("argv.out: " + argv.out);
-        argv.out = argv.out ? argv.out : "index.d.ts";
+        console.log("argv.outFile: " + argv.outFile);
+        argv.outFile = argv.outFile ? argv.outFile : "index.d.ts";
+        console.log("argv.outDir: " + argv.outDir);
+        argv.outDir = argv.outDir ? argv.outDir : "./build/";
 
         var resultDeclarationText = "";
         var processFile = function(file, cb) {
-            console.log(file.path)
-            resultDeclarationText += "export * from '" + "./" + path.relative(basePath, file.path) + "'";
+
+            var importPath = path.relative(basePath, file.path);
+            if (importPath.indexOf(".d.ts") != -1) {
+                importPath = importPath.substr(0, importPath.lastIndexOf('.d.ts'));
+            }else if (importPath.indexOf(".ts") != -1) {
+                importPath = importPath.substr(0, importPath.lastIndexOf('.ts'));
+            }
+            console.log(importPath);
+
+            resultDeclarationText += "export * from '" + "./" + importPath + "'";
             resultDeclarationText += "\n";
 
             cb(null, file);
@@ -35,8 +45,8 @@ gulp.task(
             .on(
                 "end",
                 function () {
-                    file(argv.out, resultDeclarationText)
-                        .pipe(gulp.dest(basePath));
+                    file(argv.outFile, resultDeclarationText)
+                        .pipe(gulp.dest(argv.outDir));
                 }
             );
 
