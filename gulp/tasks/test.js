@@ -1,12 +1,12 @@
 var gulp = require("gulp"),
     ts = require("gulp-typescript"),
-    config = require("../gulp.config")();
+    tsProject = ts.createProject("./tsconfig.json");
 
 gulp.task(
     "test",
     function (cb) {
-        gulp.src(config.ts_source)
-            .pipe(ts(config.ts_config))
+        tsProject.src()
+            .pipe(ts(tsProject))
             .on(
                 "error",
                 function () {
