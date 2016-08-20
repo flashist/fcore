@@ -12,9 +12,9 @@
     "url": "https://github.com/flashist/fcore"
   },
 
-  "files": {
+  "files": [
     "./src/**/*.ts"
-  },
+  ],
 
   "dependencies": {
     "es6-promise": "3.2.1",
