@@ -2,7 +2,7 @@
   "name": "fcore",
   "version": "0.0.17",
   "scripts": {
-    "tsc": "tsc --outDir build",
+    "tsc": "tsc",
     "gen-def": "gulp generate-definitions",
     "new-version": "npm version patch && npm publish"
   },

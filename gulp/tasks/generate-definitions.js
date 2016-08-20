@@ -9,12 +9,12 @@ var gulp = require("gulp"),
 
 gulp.task(
     "generate-definitions",
-    function(cb) {
+    function() {
 
         var getSafeDirPath = function(dirPath) {
             dirPath += dirPath.charAt(dirPath.length - 1) == "/" ? "" : "/";
             return dirPath;
-        }
+        };
 
         var basePath = "./src/";
         console.log("argv.src: " + argv.src);
@@ -29,7 +29,7 @@ gulp.task(
         argv.outDir = argv.outDir ? argv.outDir : "./src/";
         argv.outDir = getSafeDirPath(argv.outDir);
 
-        del([argv.outDir + argv.outFile]).then(
+        return del([argv.outDir + argv.outFile]).then(
             function (paths) {
 
                 var resultDeclarationText = "";
@@ -41,7 +41,7 @@ gulp.task(
                     }else if (importPath.indexOf(".ts") != -1) {
                         importPath = importPath.substr(0, importPath.lastIndexOf(".ts"));
                     }
-                    console.log(importPath);
+                    // console.log(importPath);
 
                     resultDeclarationText += "export * from '" + "./" + importPath + "'";
                     resultDeclarationText += "\n";
@@ -51,18 +51,18 @@ gulp.task(
 
 
                 var tempSettings = [argv.src + "**/*.ts", "!./**/*.d.ts"];
-                gulp.src(tempSettings)
+
+                return gulp.src(tempSettings)
                     .pipe(map(processFile))
                     .on(
                         "end",
                         function () {
-                            file(argv.outFile, resultDeclarationText)
+                            // console.log("generate-definitions | map.end");
+
+                            return file(argv.outFile, resultDeclarationText)
                                 .pipe(gulp.dest(argv.outDir));
                         }
                     );
-
-                cb();
-
             }
         );
     }
