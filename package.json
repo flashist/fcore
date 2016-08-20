@@ -1,14 +1,12 @@
 {
   "name": "fcore",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "tsc": "tsc --outDir build",
     "gen-def": "gulp generate-definitions --out fcore.d.ts"
   },
   "license": "MIT",
-
   "private": false,
-
   "dependencies": {
     "es6-promise": "3.2.1",
     "eventemitter3": "^1.2.0",
