@@ -1,6 +1,6 @@
 {
   "name": "fcore",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "scripts": {
     "tsc": "tsc --outDir build",
     "gen-def": "gulp generate-definitions",
@@ -12,8 +12,7 @@
     "type": "git",
     "url": "https://github.com/flashist/fcore"
   },
-  "files": [
-  ],
+  "files": [],
   "dependencies": {
     "es6-promise": "3.2.1",
     "eventemitter3": "^1.2.0",
