@@ -3,7 +3,8 @@
   "version": "0.0.3",
   "scripts": {
     "tsc": "tsc --outDir build",
-    "gen-def": "gulp generate-definitions"
+    "gen-def": "gulp generate-definitions",
+    "publish": "npm version patch && npm publish"
   },
   "license": "MIT",
   "private": false,
