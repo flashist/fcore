@@ -1,8 +1,7 @@
 module.exports = function () {
     var config = {
         ts_source: [
-            './src/**/*.ts',
-            './typings/**/*.ts'
+            './src/**/*.ts'
         ],
         ts_config: {
             "target": "es5",
