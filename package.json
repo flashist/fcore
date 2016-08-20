@@ -1,6 +1,6 @@
 {
   "name": "fcore",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "scripts": {
     "tsc": "tsc --outDir build",
     "gen-def": "gulp generate-definitions",
