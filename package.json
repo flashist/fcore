@@ -3,7 +3,7 @@
   "version": "0.0.22",
   "scripts": {
     "tsc": "tsc",
-    "build-def": "tsc && gulp generate-definitions"
+    "build-def": "gulp generate-definitions && tsc"
   },
   "license": "MIT",
   "private": false,

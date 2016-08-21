@@ -24,7 +24,7 @@ gulp.task(
         argv.src = getSafeDirPath(argv.src);
 
         console.log("argv.outFile: " + argv.outFile);
-        argv.outFile = argv.outFile ? argv.outFile : "index.d.ts";
+        argv.outFile = argv.outFile ? argv.outFile : "index.ts";
         console.log("argv.outDir: " + argv.outDir);
         argv.outDir = argv.outDir ? argv.outDir : "./src/";
         argv.outDir = getSafeDirPath(argv.outDir);
