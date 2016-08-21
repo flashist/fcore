@@ -11,8 +11,9 @@
     "type": "git",
     "url": "https://github.com/flashist/fcore"
   },
+  "typings": "./src/index.d.ts",
+
   "dependencies": {
-    "es6-promise": "3.2.1",
     "eventemitter3": "^1.2.0",
     "gulp": "3.9.1",
     "gulp-typescript": "2.13.6",

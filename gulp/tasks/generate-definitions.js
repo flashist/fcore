@@ -9,7 +9,7 @@ var gulp = require("gulp"),
 
 gulp.task(
     "generate-definitions",
-    function() {
+    function(cb) {
 
         var getSafeDirPath = function(dirPath) {
             dirPath += dirPath.charAt(dirPath.length - 1) == "/" ? "" : "/";
@@ -29,7 +29,7 @@ gulp.task(
         argv.outDir = argv.outDir ? argv.outDir : "./src/";
         argv.outDir = getSafeDirPath(argv.outDir);
 
-        return del([argv.outDir + argv.outFile]).then(
+        del([argv.outDir + argv.outFile]).then(
             function (paths) {
 
                 var resultDeclarationText = "";
@@ -52,15 +52,17 @@ gulp.task(
 
                 var tempSettings = [argv.src + "**/*.ts", "!./**/*.d.ts"];
 
-                return gulp.src(tempSettings)
+                gulp.src(tempSettings)
                     .pipe(map(processFile))
                     .on(
                         "end",
                         function () {
-                            // console.log("generate-definitions | map.end");
 
-                            return file(argv.outFile, resultDeclarationText)
+                            file(argv.outFile, resultDeclarationText)
                                 .pipe(gulp.dest(argv.outDir));
+
+                            // console.log("generate-definitions | map.end");
+                            cb();
                         }
                     );
             }

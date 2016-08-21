@@ -12,7 +12,12 @@ gulp.task(
                 function () {
                     console.log("ERROR! test.js");
                 }
-            );
-        cb();
+            ).on(
+            "finish",
+            function() {
+                console.log("COMPLETE! test.js");
+                cb();
+            }
+        );
     }
 );
