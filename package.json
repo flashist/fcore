@@ -3,8 +3,7 @@
   "version": "0.0.21",
   "scripts": {
     "tsc": "tsc",
-    "build-def": "tsc && gulp generate-definitions",
-    "prepublish": "npm version patch"
+    "build-def": "tsc && gulp generate-definitions"
   },
   "license": "MIT",
   "private": false,
