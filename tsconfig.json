@@ -10,7 +10,6 @@
     "noImplicitAny": false,
     "declaration": true,
 
-    "rootDir": "./src/",
     "outDir" : "./src/"
   },
   "exclude": [
