@@ -36,11 +36,11 @@ gulp.task(
                 var processFile = function(file, cb) {
 
                     var importPath = path.relative(basePath, file.path);
-                    /*if (importPath.indexOf(".d.ts") != -1) {
+                    if (importPath.indexOf(".d.ts") != -1) {
                         importPath = importPath.substr(0, importPath.lastIndexOf(".d.ts"));
                     }else if (importPath.indexOf(".ts") != -1) {
                         importPath = importPath.substr(0, importPath.lastIndexOf(".ts"));
-                    }*/
+                    }
                     console.log(importPath);
 
                     resultDeclarationText += "export * from '" + "./" + importPath + "'";
