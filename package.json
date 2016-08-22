@@ -12,9 +12,6 @@
     "url": "https://github.com/flashist/fcore"
   },
   "typings": "./index.d.ts",
-  "directories": {
-    "bin": "./build"
-  },
   "dependencies": {
     "eventemitter3": "^1.2.0",
     "gulp": "3.9.1",
