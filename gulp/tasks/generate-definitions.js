@@ -24,12 +24,22 @@ gulp.task(
         argv.src = getSafeDirPath(argv.src);
 
         console.log("argv.outFile: " + argv.outFile);
-        argv.outFile = argv.outFile ? argv.outFile : "index.ts";
+        argv.outFile = argv.outFile ? argv.outFile : "index";
         console.log("argv.outDir: " + argv.outDir);
         argv.outDir = argv.outDir ? argv.outDir : "./src/";
         argv.outDir = getSafeDirPath(argv.outDir);
 
-        del([argv.outDir + argv.outFile]).then(
+        var delFiles = [
+            argv.outDir + argv.outFile + ".ts",
+            argv.outDir + argv.outFile + ".d.ts",
+            argv.outDir + argv.outFile + ".js",
+            argv.outDir + argv.outFile + ".js.map"
+        ];
+        console.log("delFiles: " + delFiles);
+        var outFileName = argv.outFile + ".ts";
+        console.log("outFileName: " + outFileName);
+
+        del(delFiles).then(
             function (paths) {
 
                 var resultDeclarationText = "";
@@ -58,7 +68,7 @@ gulp.task(
                         "end",
                         function () {
 
-                            file(argv.outFile, resultDeclarationText)
+                            file(outFileName, resultDeclarationText)
                                 .pipe(gulp.dest(argv.outDir));
 
                             // console.log("generate-definitions | map.end");
