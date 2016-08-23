@@ -11,6 +11,8 @@ gulp.task(
     "generate-definitions",
     function(cb) {
 
+        console.log("START! generate-definitions.js");
+
         var getSafeDirPath = function(dirPath) {
             dirPath += dirPath.charAt(dirPath.length - 1) == "/" ? "" : "/";
             return dirPath;
@@ -71,7 +73,7 @@ gulp.task(
                             file(outFileName, resultDeclarationText)
                                 .pipe(gulp.dest(argv.outDir));
 
-                            // console.log("generate-definitions | map.end");
+                            console.log("FINISH! generate-definitions.js");
                             cb();
                         }
                     );

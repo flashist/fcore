@@ -13,11 +13,11 @@ gulp.task(
                     console.log("ERROR! test.js");
                 }
             ).on(
-            "finish",
-            function() {
-                console.log("COMPLETE! test.js");
-                cb();
-            }
-        );
+                "finish",
+                function() {
+                    console.log("COMPLETE! test.js");
+                    cb();
+                }
+            );
     }
 );
