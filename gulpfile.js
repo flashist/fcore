@@ -8,8 +8,8 @@ gulp.task(
     function(cb) {
         runSequence(
             "test",
-            "compile",
             "generate-definitions",
+            "compile",
             cb
         );
     }
