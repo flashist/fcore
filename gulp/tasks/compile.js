@@ -15,12 +15,17 @@ gulp.task(
                 function () {
                     console.log("FINISH! compile.js");
                 }
+            ).on(
+                "error",
+                function () {
+                    console.log("ERROR! compile.js");
+                }
             )
     }
 );
 
 
-// NOTE: gulp-typescript + sourcemaps - more or less workable
+// // NOTE: gulp-typescript + sourcemaps - more or less workable
 //
 // var gulp = require("gulp");
 // var ts = require("gulp-typescript");
@@ -52,13 +57,16 @@ gulp.task(
 //             .pipe(ts(tsProject));
 //
 //         return merge2([
-//             tsResult.dts.pipe(gulp.dest("src")),
-//             tsResult.js.pipe(gulp.dest("src"))
+//             // tsResult.dts.pipe(gulp.dest("./src"))
+//             // ,
+//             tsResult.js.pipe(gulp.dest(""))
 //         ]).on(
 //             "queueDrain",
 //             function() {
 //
-//                 return gulp.src("src/**/*.js")
+//                 console.log("FINISH! compile.js");
+//
+//                 /*return gulp.src("src/!**!/!*.js")
 //                     .pipe(sourcemaps.init())
 //                     .pipe(sourcemaps.write())
 //                     .pipe(gulp.dest("src"))
@@ -67,7 +75,7 @@ gulp.task(
 //                         function() {
 //                             console.log("FINISH! compile.js");
 //                         }
-//                     );
+//                     );*/
 //
 //                 /*gulp.src("src/!**!/!*.js")
 //                     .pipe(sourcemaps.init({identityMap: true}))
