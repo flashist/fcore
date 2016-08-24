@@ -1,4 +1,4 @@
-import {Dictionary} from "../../datastructure/Dictionary";
+import { Dictionary } from "../../datastructure/Dictionary";
 export declare class ObjectsPool {
     protected objectsToClassMap: Dictionary<any, any>;
     constructor();

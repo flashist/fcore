@@ -1,4 +1,4 @@
-import {BaseObject} from "./BaseObject";
+import { BaseObject } from "./BaseObject";
 export declare class BaseDataVO extends BaseObject {
     objectType: string;
     objectId: string;

@@ -1,7 +1,7 @@
-import {AssociativeArray} from "../../datastructure/associativearray/AssociativeArray";
-import {EventListenerHelperItemVO} from "./EventListenerHelperItemVO";
-import {IEventDispatcher} from "./IEventDispatcher";
-import {IEventListenerCallback} from "./IEventListenerCallback";
+import { AssociativeArray } from "../../datastructure/associativearray/AssociativeArray";
+import { EventListenerHelperItemVO } from "./EventListenerHelperItemVO";
+import { IEventDispatcher } from "./IEventDispatcher";
+import { IEventListenerCallback } from "./IEventListenerCallback";
 export declare class EventListenerHelper<EventType extends any> {
     protected listenerThis: any;
     protected listenersByTypeMap: AssociativeArray<EventListenerHelperItemVO<EventType>[]>;

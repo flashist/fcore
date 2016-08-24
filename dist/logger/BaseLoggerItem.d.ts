@@ -1,4 +1,4 @@
-import {BaseObject} from "../baseobject/BaseObject";
+import { BaseObject } from "../baseobject/BaseObject";
 export declare abstract class BaseLoggerItem extends BaseObject {
     constructor();
     abstract log(...args: any[]): void;

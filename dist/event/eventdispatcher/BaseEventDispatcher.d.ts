@@ -1,5 +1,5 @@
-import {IEventDispatcher} from "../eventlistenerhelper/IEventDispatcher";
-import {IEventListenerCallback} from "../eventlistenerhelper/IEventListenerCallback";
+import { IEventDispatcher } from "../eventlistenerhelper/IEventDispatcher";
+import { IEventListenerCallback } from "../eventlistenerhelper/IEventListenerCallback";
 export declare class BaseEventDispatcher implements IEventDispatcher<string> {
     private eventEmitter;
     constructor();
