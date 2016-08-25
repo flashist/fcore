@@ -16,6 +16,7 @@ __export(require('./other/KeyCodes'));
 __export(require('./tools/ArrayTools'));
 __export(require('./tools/NumberTools'));
 __export(require('./tools/ObjectTools'));
+__export(require('./tools/StringTools'));
 __export(require('./tools/UniqueTools'));
 __export(require('./datastructure/associativearray/AssociativeArray'));
 __export(require('./datastructure/associativearray/AssociativeArrayEvent'));

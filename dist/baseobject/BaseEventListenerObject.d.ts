@@ -3,7 +3,7 @@ import { BaseObject } from "./BaseObject";
 export declare class BaseEventListenerObject extends BaseObject {
     protected eventListenerHelper: EventListenerHelper<Event | string | any>;
     constructor(initParams?: any);
-    protected construction(): void;
+    protected construction(initParams?: any): void;
     destruction(): void;
     protected addListeners(): void;
     protected removeListeners(): void;

@@ -4,5 +4,4 @@ export declare class Point {
     constructor(x?: number, y?: number);
     clone(): Point;
     multiply(xMultiply: number, yMultiply: number): void;
-    add(x: number, y: number): void;
 }

@@ -9,10 +9,10 @@ export class BaseEventListenerObject extends BaseObject {
         super(initParams);
     }
 
-    protected construction():void {
+    protected construction(initParams?:any):void {
         this.eventListenerHelper = new EventListenerHelper(this);
 
-        super.construction();
+        super.construction(initParams);
     }
 
 

@@ -16,9 +16,4 @@
         this.x *= xMultiply;
         this.y *= yMultiply;
     }
-
-    public add(x:number, y:number):void {
-        this.x += x;
-        this.y += y;
-    }
 }

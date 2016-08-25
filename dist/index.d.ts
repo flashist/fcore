@@ -12,6 +12,7 @@ export * from './other/KeyCodes';
 export * from './tools/ArrayTools';
 export * from './tools/NumberTools';
 export * from './tools/ObjectTools';
+export * from './tools/StringTools';
 export * from './tools/UniqueTools';
 export * from './datastructure/associativearray/AssociativeArray';
 export * from './datastructure/associativearray/AssociativeArrayEvent';

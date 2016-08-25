@@ -11,9 +11,9 @@ var BaseEventListenerObject = (function (_super) {
     function BaseEventListenerObject(initParams) {
         _super.call(this, initParams);
     }
-    BaseEventListenerObject.prototype.construction = function () {
+    BaseEventListenerObject.prototype.construction = function (initParams) {
         this.eventListenerHelper = new EventListenerHelper_1.EventListenerHelper(this);
-        _super.prototype.construction.call(this);
+        _super.prototype.construction.call(this, initParams);
     };
     BaseEventListenerObject.prototype.destruction = function () {
         _super.prototype.destruction.call(this);

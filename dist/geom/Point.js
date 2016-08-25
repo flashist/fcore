@@ -13,10 +13,6 @@ var Point = (function () {
         this.x *= xMultiply;
         this.y *= yMultiply;
     };
-    Point.prototype.add = function (x, y) {
-        this.x += x;
-        this.y += y;
-    };
     return Point;
 }());
 exports.Point = Point;
