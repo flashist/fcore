@@ -3,10 +3,10 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 __export(require('./TestCoreClass'));
-__export(require('./datastructure/Dictionary'));
 __export(require('./baseobject/BaseDataVO'));
 __export(require('./baseobject/BaseEventListenerObject'));
 __export(require('./baseobject/BaseObject'));
+__export(require('./datastructure/Dictionary'));
 __export(require('./geom/Point'));
 __export(require('./geom/Rectangle'));
 __export(require('./logger/BaseLoggerItem'));
