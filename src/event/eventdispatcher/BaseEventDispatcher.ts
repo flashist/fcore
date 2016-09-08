@@ -2,7 +2,6 @@
 import {IEventListenerCallback} from "../eventlistenerhelper/IEventListenerCallback";
 
 // Type definition for the eventemitter3
-declare var EventEmitter;
 declare type EventEmitter = {
     addListener(type:string, listener:Function, context?:any);
     removeListener(type:string, listener:Function, context?:any);

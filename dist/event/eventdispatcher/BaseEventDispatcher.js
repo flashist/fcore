@@ -1,4 +1,5 @@
 "use strict";
+var EventEmitter = require('eventemitter3');
 var BaseEventDispatcher = (function () {
     function BaseEventDispatcher() {
         this.eventEmitter = new EventEmitter();
