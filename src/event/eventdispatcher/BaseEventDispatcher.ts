@@ -1,6 +1,8 @@
 ﻿import {IEventDispatcher} from "../eventlistenerhelper/IEventDispatcher";
 import {IEventListenerCallback} from "../eventlistenerhelper/IEventListenerCallback";
 
+import * as EventEmitter from "eventemitter3";
+
 // Type definition for the eventemitter3
 declare type EventEmitter = {
     addListener(type:string, listener:Function, context?:any);
