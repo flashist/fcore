@@ -23,8 +23,8 @@ __export(require('./datastructure/associativearray/AssociativeArrayEvent'));
 __export(require('./event/eventdispatcher/BaseEventDispatcher'));
 __export(require('./event/eventlistenerhelper/EventListenerHelper'));
 __export(require('./event/eventlistenerhelper/EventListenerHelperItemVO'));
-__export(require('./modules/objectspool/ObjectsPool'));
 __export(require('./other/wrapper/BaseClassWrapper'));
+__export(require('./modules/objectspool/ObjectsPool'));
 __export(require('./tools/keyboard/JSKeyboardEvent'));
 __export(require('./tools/keyboard/KeyboardTools'));
 //# sourceMappingURL=index.js.map
