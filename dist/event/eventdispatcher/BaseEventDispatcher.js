@@ -2,7 +2,7 @@
 var EventEmitter = require("eventemitter3");
 var BaseEventDispatcher = (function () {
     function BaseEventDispatcher() {
-        this.eventEmitter = new EventEmitter();
+        this.eventEmitter = (new EventEmitter());
     }
     BaseEventDispatcher.prototype.addEventListener = function (type, listener) {
         this.eventEmitter.addListener(type, listener);

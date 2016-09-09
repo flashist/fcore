@@ -4,7 +4,7 @@ import {IEventListenerCallback} from "../eventlistenerhelper/IEventListenerCallb
 import * as EventEmitter from "eventemitter3";
 
 // Type definition for the eventemitter3
-declare type EventEmitter = {
+declare type IEventEmitter = {
     addListener(type:string, listener:Function, context?:any);
     removeListener(type:string, listener:Function, context?:any);
     removeAllListeners(type?:string);
@@ -12,10 +12,10 @@ declare type EventEmitter = {
 };
 
 export class BaseEventDispatcher implements IEventDispatcher<string> {
-    private eventEmitter:EventEmitter;
+    private eventEmitter:IEventEmitter;
 
     public constructor() {
-        this.eventEmitter = new EventEmitter();
+        this.eventEmitter = (new EventEmitter() as IEventEmitter);
     }
 
     addEventListener(type:string, listener:IEventListenerCallback<string>):void {
