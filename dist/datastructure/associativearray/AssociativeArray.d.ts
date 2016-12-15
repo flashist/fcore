@@ -21,7 +21,7 @@ export declare class AssociativeArray<ValueType> extends BaseObject {
     getItemByIndex(index: number): ValueType;
     getItemKey(item: ValueType): string;
     getAllItems(): ValueType[];
-    readonly length: number;
+    getLength(): number;
     forEach(callback: (value: ValueType, index: number, array: ValueType[]) => void, thisArg?: any): void;
     every(callback: (value: ValueType, index: number, array: ValueType[]) => boolean, thisArg?: any): boolean;
 }

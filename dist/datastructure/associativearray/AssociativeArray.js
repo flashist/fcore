@@ -108,13 +108,9 @@ var AssociativeArray = (function (_super) {
     AssociativeArray.prototype.getAllItems = function () {
         return this.list.concat();
     };
-    Object.defineProperty(AssociativeArray.prototype, "length", {
-        get: function () {
-            return this.list.length;
-        },
-        enumerable: true,
-        configurable: true
-    });
+    AssociativeArray.prototype.getLength = function () {
+        return this.list.length;
+    };
     AssociativeArray.prototype.forEach = function (callback, thisArg) {
         this.list.forEach(callback, thisArg);
     };
