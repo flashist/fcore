@@ -140,7 +140,7 @@ export class AssociativeArray<ValueType> extends BaseObject {
         return this.list.concat();
     }
 
-    public get length():number {
+    public getLength():number {
         return this.list.length;
     }
 
