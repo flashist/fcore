@@ -8,7 +8,7 @@ var BaseEventListenerObject_1 = require("../../baseobject/BaseEventListenerObjec
 var BaseClassWrapper = (function (_super) {
     __extends(BaseClassWrapper, _super);
     function BaseClassWrapper() {
-        _super.apply(this, arguments);
+        return _super.apply(this, arguments) || this;
     }
     Object.defineProperty(BaseClassWrapper.prototype, "object", {
         get: function () {

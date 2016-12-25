@@ -8,7 +8,7 @@ var BaseObject_1 = require("../baseobject/BaseObject");
 var BaseLoggerItem = (function (_super) {
     __extends(BaseLoggerItem, _super);
     function BaseLoggerItem() {
-        _super.call(this);
+        return _super.call(this) || this;
     }
     return BaseLoggerItem;
 }(BaseObject_1.BaseObject));

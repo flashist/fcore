@@ -9,7 +9,7 @@ var BaseObject_1 = require("../../baseobject/BaseObject");
 var AssociativeArray = (function (_super) {
     __extends(AssociativeArray, _super);
     function AssociativeArray() {
-        _super.call(this);
+        return _super.call(this) || this;
     }
     AssociativeArray.prototype.construction = function () {
         _super.prototype.construction.call(this);

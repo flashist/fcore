@@ -10,7 +10,7 @@ var Logger = (function () {
         //console.log("console __ CustomLogger | log __ args: " + args + " | CustomLogger.loggerItems.length: " + CustomLogger.loggerItems.length);
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i - 0] = arguments[_i];
+            args[_i] = arguments[_i];
         }
         for (var itemIndex = 0; itemIndex < Logger.loggerItemsCount; itemIndex++) {
             Logger.loggerItems[itemIndex].log.apply(Logger.loggerItems[itemIndex], args);
@@ -20,7 +20,7 @@ var Logger = (function () {
         //console.error("console __ CustomLogger | log __ args: " + args + " | CustomLogger.loggerItems.length: " + CustomLogger.loggerItems.length);
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i - 0] = arguments[_i];
+            args[_i] = arguments[_i];
         }
         for (var itemIndex = 0; itemIndex < Logger.loggerItemsCount; itemIndex++) {
             Logger.loggerItems[itemIndex].error.apply(Logger.loggerItems[itemIndex], args);
@@ -29,7 +29,7 @@ var Logger = (function () {
     Logger.debug = function () {
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i - 0] = arguments[_i];
+            args[_i] = arguments[_i];
         }
         for (var itemIndex = 0; itemIndex < Logger.loggerItemsCount; itemIndex++) {
             Logger.loggerItems[itemIndex].debug.apply(Logger.loggerItems[itemIndex], args);
@@ -49,9 +49,9 @@ var Logger = (function () {
             Logger.loggerItems[itemIndex].stopLogTime.apply(Logger.loggerItems[itemIndex], id);
         }
     };
-    Logger.loggerItems = [];
-    Logger.loggerItemsCount = 0;
     return Logger;
 }());
+Logger.loggerItems = [];
+Logger.loggerItemsCount = 0;
 exports.Logger = Logger;
 //# sourceMappingURL=Logger.js.map

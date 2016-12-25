@@ -9,7 +9,7 @@ var BaseObject_1 = require("./BaseObject");
 var BaseEventListenerObject = (function (_super) {
     __extends(BaseEventListenerObject, _super);
     function BaseEventListenerObject(initParams) {
-        _super.call(this, initParams);
+        return _super.call(this, initParams) || this;
     }
     BaseEventListenerObject.prototype.construction = function (initParams) {
         this.eventListenerHelper = new EventListenerHelper_1.EventListenerHelper(this);

@@ -1,4 +1,5 @@
 export * from './TestCoreClass';
+export * from './index';
 export * from './baseobject/BaseDataVO';
 export * from './baseobject/BaseEventListenerObject';
 export * from './baseobject/BaseObject';

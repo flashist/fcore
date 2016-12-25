@@ -57,8 +57,8 @@ var ArrayTools = (function () {
         }
         list.splice(newIndex, 0, list.splice(oldIndex, 1)[0]);
     };
-    ArrayTools.REMOVE_COUNT_ALL = -1;
     return ArrayTools;
 }());
+ArrayTools.REMOVE_COUNT_ALL = -1;
 exports.ArrayTools = ArrayTools;
 //# sourceMappingURL=ArrayTools.js.map

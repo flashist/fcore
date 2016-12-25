@@ -9,9 +9,9 @@ var UniqueTools = (function () {
         }
         return object[UniqueTools.UNIQUE_ID_PROP_NAME];
     };
-    UniqueTools.UNIQUE_ID_PROP_NAME = "flashistUniqueId";
-    UniqueTools.globalUniqueId = 0;
     return UniqueTools;
 }());
+UniqueTools.UNIQUE_ID_PROP_NAME = "flashistUniqueId";
+UniqueTools.globalUniqueId = 0;
 exports.UniqueTools = UniqueTools;
 //# sourceMappingURL=UniqueTools.js.map

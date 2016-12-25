@@ -10,11 +10,12 @@ var BaseObject_1 = require("./BaseObject");
 var BaseDataVO = (function (_super) {
     __extends(BaseDataVO, _super);
     function BaseDataVO() {
-        _super.call(this);
-        this.objectType = "";
-        this.objectId = "";
-        this.sourceData = {};
-        this.sourceDataPropNamesMap = {};
+        var _this = _super.call(this) || this;
+        _this.objectType = "";
+        _this.objectId = "";
+        _this.sourceData = {};
+        _this.sourceDataPropNamesMap = {};
+        return _this;
     }
     BaseDataVO.prototype.commitSourceData = function () {
         var propName;

@@ -8,11 +8,12 @@ var BaseEventDispatcher_1 = require("../event/eventdispatcher/BaseEventDispatche
 var BaseObject = (function (_super) {
     __extends(BaseObject, _super);
     function BaseObject(initParams) {
-        _super.call(this);
-        this.construction(initParams);
-        this.isConstructed = true;
-        this.addListeners();
-        this.commitData();
+        var _this = _super.call(this) || this;
+        _this.construction(initParams);
+        _this.isConstructed = true;
+        _this.addListeners();
+        _this.commitData();
+        return _this;
     }
     BaseObject.prototype.construction = function (initParams) {
         // Note: subclasses should implement their own logic here
