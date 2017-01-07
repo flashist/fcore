@@ -30,7 +30,7 @@ export class BaseEventDispatcher implements IEventDispatcher<string> {
         this.eventEmitter.removeListener(type, listener as Function);
     }
 
-    dispatchEvent(event:string, data?:any):void {
-        this.eventEmitter.emit(event, data);
+    dispatchEvent(event:string, ...args:any[]):void {
+        this.eventEmitter.emit(event, ...args);
     }
 }
