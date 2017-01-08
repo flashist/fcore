@@ -5,5 +5,5 @@ export interface IEventDispatcher<EventType> {
     removeAllEventListeners(type?:string): void;
     removeEventListener(type:string, listener:any): void;
 
-    dispatchEvent(event:EventType, data?:any): void;
+    dispatchEvent(event:EventType, ...args): void;
 }

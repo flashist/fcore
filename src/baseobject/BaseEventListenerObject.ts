@@ -4,15 +4,15 @@ import {BaseObject} from "./BaseObject";
 export class BaseEventListenerObject extends BaseObject {
     protected eventListenerHelper:EventListenerHelper<Event | string | any>;
 
-    constructor(initParams?:any) {
+    constructor(...args) {
 
-        super(initParams);
+        super(...args);
     }
 
-    protected construction(initParams?:any):void {
+    protected construction(...args):void {
         this.eventListenerHelper = new EventListenerHelper(this);
 
-        super.construction(initParams);
+        super.construction(...args);
     }
 
 

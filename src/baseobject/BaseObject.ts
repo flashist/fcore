@@ -5,10 +5,10 @@ export class BaseObject extends BaseEventDispatcher {
 
     private _data:any;
 
-    constructor(initParams?:any) {
+    constructor(...args) {
         super();
 
-        this.construction(initParams);
+        this.construction(...args);
         this.isConstructed = true;
 
         this.addListeners();
@@ -16,7 +16,7 @@ export class BaseObject extends BaseEventDispatcher {
     }
 
 
-    protected construction(initParams?:any):void {
+    protected construction(...args):void {
         // Note: subclasses should implement their own logic here
     }
 

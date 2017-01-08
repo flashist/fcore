@@ -2,8 +2,8 @@ import { BaseEventDispatcher } from "../event/eventdispatcher/BaseEventDispatche
 export declare class BaseObject extends BaseEventDispatcher {
     protected isConstructed: boolean;
     private _data;
-    constructor(initParams?: any);
-    protected construction(initParams?: any): void;
+    constructor(...args: any[]);
+    protected construction(...args: any[]): void;
     destruction(): void;
     protected addListeners(): void;
     protected removeListeners(): void;

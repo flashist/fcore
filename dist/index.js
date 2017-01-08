@@ -4,15 +4,15 @@ function __export(m) {
 }
 __export(require("./TestCoreClass"));
 __export(require("./index"));
-__export(require("./baseobject/BaseDataVO"));
-__export(require("./baseobject/BaseEventListenerObject"));
-__export(require("./baseobject/BaseObject"));
 __export(require("./command/Command"));
 __export(require("./command/CommandErrorCode"));
 __export(require("./command/CommandEvent"));
 __export(require("./command/QueueCommand"));
 __export(require("./command/QueueCommandErrorCode"));
 __export(require("./command/QueueCommandEvent"));
+__export(require("./baseobject/BaseDataVO"));
+__export(require("./baseobject/BaseEventListenerObject"));
+__export(require("./baseobject/BaseObject"));
 __export(require("./datastructure/Dictionary"));
 __export(require("./geom/Point"));
 __export(require("./geom/Rectangle"));
@@ -25,9 +25,9 @@ __export(require("./tools/NumberTools"));
 __export(require("./tools/ObjectTools"));
 __export(require("./tools/StringTools"));
 __export(require("./tools/UniqueTools"));
-__export(require("./event/eventdispatcher/BaseEventDispatcher"));
 __export(require("./datastructure/associativearray/AssociativeArray"));
 __export(require("./datastructure/associativearray/AssociativeArrayEvent"));
+__export(require("./event/eventdispatcher/BaseEventDispatcher"));
 __export(require("./event/eventlistenerhelper/EventListenerHelper"));
 __export(require("./event/eventlistenerhelper/EventListenerHelperItemVO"));
 __export(require("./modules/objectspool/ObjectsPool"));
@@ -35,4 +35,6 @@ __export(require("./other/wrapper/BaseClassWrapper"));
 __export(require("./tools/keyboard/JSKeyboardEvent"));
 __export(require("./tools/keyboard/KeyboardTools"));
 __export(require("./tools/windows/JSWindowEvent"));
+__export(require("./other/other/align/Align"));
+__export(require("./other/other/align/VAlign"));
 //# sourceMappingURL=index.js.map
