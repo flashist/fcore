@@ -15,6 +15,7 @@ export * from './geom/Rectangle';
 export * from './logger/BaseLoggerItem';
 export * from './logger/ConsoleLoggerItem';
 export * from './logger/Logger';
+export * from './other/IConstructor';
 export * from './other/KeyCodes';
 export * from './tools/ArrayTools';
 export * from './tools/NumberTools';

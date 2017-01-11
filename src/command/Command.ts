@@ -21,6 +21,9 @@ export class Command extends BaseEventListenerObject {
 
     public errorCode:string;
 
+    private promiseResolve:(result:any)=>void;
+    private promiseReject:(error:Error)=>void;
+
     constructor() {
         super();
 
@@ -28,19 +31,26 @@ export class Command extends BaseEventListenerObject {
         this.eventListenerHelper = new EventListenerHelper(this);
     }
 
-    public execute():void {
-        if (this.isExecuting || this.isCompleted) {
-            Logger.log("Command | execute", "WARNING! Second execute while executing or complete! this.isExecuting: " + this.isExecuting + " | this.isCompleted: " + this.isCompleted);
-            return;
-        }
+    public execute():Promise<any> {
+        return new Promise(
+            (resolve:(result:any)=>void, reject:(error:Error)=>void) => {
+                this.promiseResolve = resolve;
+                this.promiseReject = reject;
 
-        this._isExecuting = true;
+                if (this.isExecuting || this.isCompleted) {
+                    Logger.log("Command | execute", "WARNING! Second execute while executing or complete! this.isExecuting: " + this.isExecuting + " | this.isCompleted: " + this.isCompleted);
+                    return;
+                }
 
-        if (Command.cache.indexOf(this) == -1) {
-            Command.cache.push(this);
-        }
+                this._isExecuting = true;
 
-        this.executeInternal();
+                if (Command.cache.indexOf(this) == -1) {
+                    Command.cache.push(this);
+                }
+
+                this.executeInternal();
+            }
+        );
     }
 
 
@@ -49,7 +59,7 @@ export class Command extends BaseEventListenerObject {
     }
 
 
-    protected notifyComplete():void {
+    protected notifyComplete(resolveData?:any, rejectData?:any):void {
         this._isExecuting = false;
 
         if (!this.isCompleted) {
@@ -60,6 +70,12 @@ export class Command extends BaseEventListenerObject {
             /*var tempEvent:BaseEvent = new BaseEvent(BaseEvent.COMPLETE);
              this.dispatchEvent(tempEvent);*/
             this.dispatchEvent(CommandEvent.COMPLETE);
+
+            if (this.success) {
+                this.promiseResolve(resolveData);
+            } else {
+                this.promiseReject(rejectData);
+            }
         }
 
 
@@ -72,7 +88,7 @@ export class Command extends BaseEventListenerObject {
             this.errorCode = CommandErrorCode.TERMINATE;
         }
 
-        this.notifyComplete();
+        this.notifyComplete(Error(this.errorCode));
     }
 
 

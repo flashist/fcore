@@ -10,6 +10,7 @@
   "typings": "dist/index.d.ts",
   "main": "dist/index.js",
   "dependencies": {
+    "@types/es6-promise": "0.0.32",
     "eventemitter3": "^1.2.0"
   },
   "devDependencies": {
@@ -22,7 +23,7 @@
     "gulp-shell": "0.5.2",
     "gulp-sourcemaps": "1.6.0",
     "gulp-tsc": "^1.2.0",
-    "gulp-typescript": "2.13.6",
+    "gulp-typescript": "3.1.4",
     "map-stream": "0.0.6",
     "merge2": "1.0.2",
     "path": "0.12.7",
