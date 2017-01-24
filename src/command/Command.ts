@@ -21,8 +21,8 @@ export class Command extends BaseEventListenerObject {
 
     public errorCode:string;
 
-    private promiseResolve:(result:any)=>void;
-    private promiseReject:(error:Error)=>void;
+    private promiseResolve:(result?:any)=>void;
+    private promiseReject:(errorCode?:string)=>void;
 
     constructor() {
         super();
@@ -33,7 +33,7 @@ export class Command extends BaseEventListenerObject {
 
     public execute():Promise<any> {
         return new Promise(
-            (resolve:(result:any)=>void, reject:(error:Error)=>void) => {
+            (resolve:(result:any)=>void, reject:()=>void) => {
                 this.promiseResolve = resolve;
                 this.promiseReject = reject;
 
@@ -59,7 +59,7 @@ export class Command extends BaseEventListenerObject {
     }
 
 
-    protected notifyComplete(resolveData?:any, rejectData?:any):void {
+    protected notifyComplete(resolveData?:any, rejectErrorData?:any):void {
         this._isExecuting = false;
 
         if (!this.isCompleted) {
@@ -74,7 +74,7 @@ export class Command extends BaseEventListenerObject {
             if (this.success) {
                 this.promiseResolve(resolveData);
             } else {
-                this.promiseReject(rejectData);
+                this.promiseReject(rejectErrorData);
             }
         }
 
