@@ -1,1 +1,1 @@
-{"version":3,"file":"BaseLoggerItem.js","sourceRoot":"","sources":["../../src/logger/BaseLoggerItem.ts"],"names":[],"mappings":";;;;;;AAAA,uDAAoD;AAEpD;IAA6C,kCAAU;IACnD;eACI,iBAAO;IACX,CAAC;IAWL,qBAAC;AAAD,CAAC,AAdD,CAA6C,uBAAU,GActD;AAdqB,wCAAc"}
+{"version":3,"file":"BaseLoggerItem.js","sourceRoot":"","sources":["../../src/logger/BaseLoggerItem.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,uDAAoD;AAEpD;IAA6C,kCAAU;IACnD;eACI,iBAAO;IACX,CAAC;IAWL,qBAAC;AAAD,CAAC,AAdD,CAA6C,uBAAU,GActD;AAdqB,wCAAc"}

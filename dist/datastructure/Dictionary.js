@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var UniqueTools_1 = require("../tools/UniqueTools");
 var Dictionary = (function () {
     function Dictionary() {

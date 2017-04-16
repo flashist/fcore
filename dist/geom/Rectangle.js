@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Rectangle = (function () {
     function Rectangle(x, y, width, height) {
         if (x === void 0) { x = 0; }

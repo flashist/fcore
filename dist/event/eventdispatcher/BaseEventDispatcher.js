@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var EventEmitter = require("eventemitter3");
 var BaseEventDispatcher = (function () {
     function BaseEventDispatcher() {

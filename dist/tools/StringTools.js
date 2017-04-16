@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var ObjectTools_1 = require("./ObjectTools");
 var StringTools = (function () {
     function StringTools() {

@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var AssociativeArray_1 = require("../../datastructure/associativearray/AssociativeArray");
 var EventListenerHelperItemVO_1 = require("./EventListenerHelperItemVO");
 var ArrayTools_1 = require("../../tools/ArrayTools");
