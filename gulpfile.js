@@ -8,15 +8,11 @@ var tasks = requireDir("./gulp/tasks");
 
 gulp.task(
     "build",
-    function(cb) {
-        runSequence(
-            "clean",
-            "test",
-            "generate-definitions",
-            "compile",
-            cb
-        );
-    }
+    [
+        "clean",
+        "generate-definitions",
+        "compile"
+    ]
 );
 
 gulp.task(

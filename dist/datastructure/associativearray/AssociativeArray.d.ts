@@ -24,4 +24,5 @@ export declare class AssociativeArray<ValueType> extends BaseObject {
     getLength(): number;
     forEach(callback: (value: ValueType, index: number, array: ValueType[]) => void, thisArg?: any): void;
     every(callback: (value: ValueType, index: number, array: ValueType[]) => boolean, thisArg?: any): boolean;
+    sort(compareFunction?: (item1: ValueType, item2: ValueType) => number): ValueType[];
 }

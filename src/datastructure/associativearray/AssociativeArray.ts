@@ -158,4 +158,8 @@ export class AssociativeArray<ValueType> extends BaseObject {
 
         return this.list.every(callback, thisArg);
     }
+
+    public sort(compareFunction?: (item1: ValueType, item2: ValueType) => number): ValueType[] {
+        return this.list.sort(compareFunction);
+    }
 }

@@ -32,7 +32,9 @@ export class Command extends BaseEventListenerObject {
     }
 
     public execute():Promise<any> {
-        return new Promise(
+        console.log("Action | execute __ name: " + this.constructor['name']);
+
+        return new Promise<any>(
             (resolve:(result:any)=>void, reject:()=>void) => {
                 this.promiseResolve = resolve;
                 this.promiseReject = reject;

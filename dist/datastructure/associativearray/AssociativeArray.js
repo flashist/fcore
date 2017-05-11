@@ -123,6 +123,9 @@ var AssociativeArray = (function (_super) {
     AssociativeArray.prototype.every = function (callback, thisArg) {
         return this.list.every(callback, thisArg);
     };
+    AssociativeArray.prototype.sort = function (compareFunction) {
+        return this.list.sort(compareFunction);
+    };
     return AssociativeArray;
 }(BaseObject_1.BaseObject));
 exports.AssociativeArray = AssociativeArray;

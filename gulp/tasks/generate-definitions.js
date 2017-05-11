@@ -1,12 +1,8 @@
 var gulp = require("gulp");
-var ts = require("gulp-typescript");
 var fs = require("fs");
 var argv = require("yargs").argv;
-var file = require("gulp-file");
-var foreach = require("gulp-foreach");
 var path = require("path");
 var map = require("gulp-map");
-var mapStream = require("map-stream");
 
 gulp.task(
     "generate-definitions",
