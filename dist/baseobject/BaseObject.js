@@ -11,15 +11,23 @@ var __extends = (this && this.__extends) || (function () {
 import { BaseEventDispatcher } from "../event/eventdispatcher/BaseEventDispatcher";
 var BaseObject = (function (_super) {
     __extends(BaseObject, _super);
-    function BaseObject(initParams) {
+    function BaseObject() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
         var _this = _super.call(this) || this;
-        _this.construction(initParams);
+        _this.construction.apply(_this, args);
         _this.isConstructed = true;
         _this.addListeners();
         _this.commitData();
         return _this;
     }
-    BaseObject.prototype.construction = function (initParams) {
+    BaseObject.prototype.construction = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
         // Note: subclasses should implement their own logic here
     };
     BaseObject.prototype.destruction = function () {

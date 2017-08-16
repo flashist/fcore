@@ -7,8 +7,8 @@
     "type": "git",
     "url": "https://github.com/flashist/fcore"
   },
-  "typings": "dist/index.d.ts",
-  "main": "dist/index.js",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "dependencies": {
     "eventemitter3": "^2.0.3"
   },
@@ -16,6 +16,7 @@
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-file": "^0.3.0",
+    "gulp-map": "0.0.2",
     "gulp-shell": "^0.6.3",
     "gulp-typescript": "^3.2.1",
     "map-stream": "0.0.7",
@@ -23,7 +24,6 @@
     "rimraf": "^2.6.1",
     "run-sequence": "^1.2.2",
     "ts-loader": "^2.2.0",
-    "typescript": "2.3.x",
-    "webpack": "^3.0.0"
+    "typescript": "2.3.x"
   }
 }

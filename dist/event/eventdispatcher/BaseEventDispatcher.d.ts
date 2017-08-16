@@ -5,6 +5,6 @@ export declare class BaseEventDispatcher implements IEventDispatcher<string> {
     constructor();
     addEventListener(type: string, listener: IEventListenerCallback<string>): void;
     removeAllEventListeners(type?: string): void;
-    removeEventListener(type: string, listener: any): void;
+    removeEventListener(type: string, listener: IEventListenerCallback<string>): void;
     dispatchEvent(event: string, ...args: any[]): void;
 }

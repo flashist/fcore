@@ -12,12 +12,20 @@ import { EventListenerHelper } from "../event/eventlistenerhelper/EventListenerH
 import { BaseObject } from "./BaseObject";
 var BaseEventListenerObject = (function (_super) {
     __extends(BaseEventListenerObject, _super);
-    function BaseEventListenerObject(initParams) {
-        return _super.call(this, initParams) || this;
+    function BaseEventListenerObject() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        return _super.apply(this, args) || this;
     }
-    BaseEventListenerObject.prototype.construction = function (initParams) {
+    BaseEventListenerObject.prototype.construction = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
         this.eventListenerHelper = new EventListenerHelper(this);
-        _super.prototype.construction.call(this, initParams);
+        _super.prototype.construction.apply(this, args);
     };
     BaseEventListenerObject.prototype.destruction = function () {
         _super.prototype.destruction.call(this);

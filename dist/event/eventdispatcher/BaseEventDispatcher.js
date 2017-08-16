@@ -12,8 +12,13 @@ var BaseEventDispatcher = (function () {
     BaseEventDispatcher.prototype.removeEventListener = function (type, listener) {
         this.eventEmitter.removeListener(type, listener);
     };
-    BaseEventDispatcher.prototype.dispatchEvent = function (event, data) {
-        this.eventEmitter.emit(event, data);
+    BaseEventDispatcher.prototype.dispatchEvent = function (event) {
+        var args = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            args[_i - 1] = arguments[_i];
+        }
+        (_a = this.eventEmitter).emit.apply(_a, [event].concat(args));
+        var _a;
     };
     return BaseEventDispatcher;
 }());
