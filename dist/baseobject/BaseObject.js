@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,27 +8,18 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var BaseEventDispatcher_1 = require("../event/eventdispatcher/BaseEventDispatcher");
+import { BaseEventDispatcher } from "../event/eventdispatcher/BaseEventDispatcher";
 var BaseObject = (function (_super) {
     __extends(BaseObject, _super);
-    function BaseObject() {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
+    function BaseObject(initParams) {
         var _this = _super.call(this) || this;
-        _this.construction.apply(_this, args);
+        _this.construction(initParams);
         _this.isConstructed = true;
         _this.addListeners();
         _this.commitData();
         return _this;
     }
-    BaseObject.prototype.construction = function () {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
+    BaseObject.prototype.construction = function (initParams) {
         // Note: subclasses should implement their own logic here
     };
     BaseObject.prototype.destruction = function () {
@@ -64,6 +54,6 @@ var BaseObject = (function (_super) {
         configurable: true
     });
     return BaseObject;
-}(BaseEventDispatcher_1.BaseEventDispatcher));
-exports.BaseObject = BaseObject;
+}(BaseEventDispatcher));
+export { BaseObject };
 //# sourceMappingURL=BaseObject.js.map

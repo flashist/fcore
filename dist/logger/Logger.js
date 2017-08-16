@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var Logger = (function () {
     function Logger() {
     }
@@ -52,7 +50,7 @@ var Logger = (function () {
     };
     return Logger;
 }());
+export { Logger };
 Logger.loggerItems = [];
 Logger.loggerItemsCount = 0;
-exports.Logger = Logger;
 //# sourceMappingURL=Logger.js.map

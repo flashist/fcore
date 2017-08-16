@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var ArrayTools = (function () {
     function ArrayTools() {
     }
@@ -60,6 +58,6 @@ var ArrayTools = (function () {
     };
     return ArrayTools;
 }());
+export { ArrayTools };
 ArrayTools.REMOVE_COUNT_ALL = -1;
-exports.ArrayTools = ArrayTools;
 //# sourceMappingURL=ArrayTools.js.map

@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var UniqueTools = (function () {
     function UniqueTools() {
     }
@@ -12,7 +10,7 @@ var UniqueTools = (function () {
     };
     return UniqueTools;
 }());
+export { UniqueTools };
 UniqueTools.UNIQUE_ID_PROP_NAME = "flashistUniqueId";
 UniqueTools.globalUniqueId = 0;
-exports.UniqueTools = UniqueTools;
 //# sourceMappingURL=UniqueTools.js.map

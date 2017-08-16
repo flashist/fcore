@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var ObjectTools_1 = require("./ObjectTools");
+import { ObjectTools } from "./ObjectTools";
 var StringTools = (function () {
     function StringTools() {
     }
@@ -14,7 +12,7 @@ var StringTools = (function () {
     StringTools.substitute = function (sourceText, substituteParams) {
         if (substituteParams === void 0) { substituteParams = null; }
         var resultStr = sourceText;
-        if (ObjectTools_1.ObjectTools.isSimpleType(substituteParams)) {
+        if (ObjectTools.isSimpleType(substituteParams)) {
             substituteParams = [substituteParams];
         }
         if (substituteParams) {
@@ -36,5 +34,5 @@ var StringTools = (function () {
     };
     return StringTools;
 }());
-exports.StringTools = StringTools;
+export { StringTools };
 //# sourceMappingURL=StringTools.js.map

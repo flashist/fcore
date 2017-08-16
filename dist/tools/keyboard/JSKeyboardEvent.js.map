@@ -1,1 +1,1 @@
-{"version":3,"file":"JSKeyboardEvent.js","sourceRoot":"","sources":["../../../src/tools/keyboard/JSKeyboardEvent.ts"],"names":[],"mappings":";;AAAA;IAAA;IAMA,CAAC;IAAD,sBAAC;AAAD,CAAC,AAND;AAEW,wBAAQ,GAAU,SAAS,CAAC;AAC5B,yBAAS,GAAU,UAAU,CAAC;AAC9B,sBAAM,GAAU,OAAO,CAAC;AAJtB,0CAAe"}
+{"version":3,"file":"JSKeyboardEvent.js","sourceRoot":"","sources":["../../../src/tools/keyboard/JSKeyboardEvent.ts"],"names":[],"mappings":"AAAA;IAAA;IAMA,CAAC;IAAD,sBAAC;AAAD,CAAC,AAND;;AAEW,wBAAQ,GAAU,SAAS,CAAC;AAC5B,yBAAS,GAAU,UAAU,CAAC;AAC9B,sBAAM,GAAU,OAAO,CAAC"}

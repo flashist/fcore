@@ -1,6 +1,6 @@
 {
   "name": "fcore",
-  "version": "0.0.46",
+  "version": "0.0.45",
   "license": "MIT",
   "private": false,
   "repository": {
@@ -10,19 +10,20 @@
   "typings": "dist/index.d.ts",
   "main": "dist/index.js",
   "dependencies": {
-    "eventemitter3": "1.2.x"
+    "eventemitter3": "^2.0.3"
   },
   "devDependencies": {
-    "@types/es6-promise": "0.0.x",
-    "gulp": "3.9.x",
-    "gulp-map": "0.0.x",
-    "gulp-shell": "0.5.x",
-    "path": "0.12.x",
-    "pixi.js": "4.5.x",
-    "require-dir": "0.3.x",
-    "rimraf": "2.5.x",
-    "run-sequence": "1.2.x",
-    "typescript": "2.x",
-    "yargs": "5.0.x"
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-file": "^0.3.0",
+    "gulp-shell": "^0.6.3",
+    "gulp-typescript": "^3.2.1",
+    "map-stream": "0.0.7",
+    "require-dir": "^0.3.2",
+    "rimraf": "^2.6.1",
+    "run-sequence": "^1.2.2",
+    "ts-loader": "^2.2.0",
+    "typescript": "2.3.x",
+    "webpack": "^3.0.0"
   }
 }

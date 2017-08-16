@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,10 +8,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var Logger_1 = require("../logger/Logger");
-var ObjectTools_1 = require("../tools/ObjectTools");
-var BaseObject_1 = require("./BaseObject");
+import { Logger } from "../logger/Logger";
+import { ObjectTools } from "../tools/ObjectTools";
+import { BaseObject } from "./BaseObject";
 var BaseDataVO = (function (_super) {
     __extends(BaseDataVO, _super);
     function BaseDataVO() {
@@ -43,7 +41,7 @@ var BaseDataVO = (function (_super) {
                             this[propName] = propValue;
                         }
                         catch (error) {
-                            Logger_1.Logger.error("BaseDataVO | commitSourceData __ ERROR! error: " + error);
+                            Logger.error("BaseDataVO | commitSourceData __ ERROR! error: " + error);
                         }
                     }
                 }
@@ -51,10 +49,10 @@ var BaseDataVO = (function (_super) {
         }
     };
     BaseDataVO.prototype.changeSourceData = function (changesData) {
-        ObjectTools_1.ObjectTools.copyProps(this.sourceData, changesData, true);
+        ObjectTools.copyProps(this.sourceData, changesData, true);
         this.commitSourceData();
     };
     return BaseDataVO;
-}(BaseObject_1.BaseObject));
-exports.BaseDataVO = BaseDataVO;
+}(BaseObject));
+export { BaseDataVO };
 //# sourceMappingURL=BaseDataVO.js.map

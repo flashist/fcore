@@ -1,15 +1,13 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var AssociativeArray_1 = require("../../datastructure/associativearray/AssociativeArray");
-var EventListenerHelperItemVO_1 = require("./EventListenerHelperItemVO");
-var ArrayTools_1 = require("../../tools/ArrayTools");
+import { AssociativeArray } from "../../datastructure/associativearray/AssociativeArray";
+import { EventListenerHelperItemVO } from "./EventListenerHelperItemVO";
+import { ArrayTools } from "../../tools/ArrayTools";
 var EventListenerHelper = (function () {
     function EventListenerHelper(listenerThis) {
         this.listenerThis = listenerThis;
         this.construction();
     }
     EventListenerHelper.prototype.construction = function () {
-        this.listenersByTypeMap = new AssociativeArray_1.AssociativeArray();
+        this.listenersByTypeMap = new AssociativeArray();
     };
     EventListenerHelper.prototype.destruction = function () {
         this.removeAllListeners();
@@ -17,7 +15,7 @@ var EventListenerHelper = (function () {
     };
     EventListenerHelper.prototype.addEventListener = function (dispatcher, type, listener) {
         var tempListeners = this.getEventListeners(type);
-        var tempListenerData = new EventListenerHelperItemVO_1.EventListenerHelperItemVO();
+        var tempListenerData = new EventListenerHelperItemVO();
         tempListenerData.dispatcher = dispatcher;
         tempListenerData.type = type;
         tempListenerData.listener = listener.bind(this.listenerThis);
@@ -58,7 +56,7 @@ var EventListenerHelper = (function () {
                     tempListenerData.dispatcher.removeEventListener(tempListenerData.type, tempListenerData.listener);
                     // Remove information about listener from the list,
                     // to release the memory used by this item
-                    ArrayTools_1.ArrayTools.removeItem(item, tempListenerData);
+                    ArrayTools.removeItem(item, tempListenerData);
                 }
             }
             //CustomLogger.log("EventListenerHelper | removeAllListeners __ end __ item.length: " + item.length);
@@ -73,5 +71,5 @@ var EventListenerHelper = (function () {
     };
     return EventListenerHelper;
 }());
-exports.EventListenerHelper = EventListenerHelper;
+export { EventListenerHelper };
 //# sourceMappingURL=EventListenerHelper.js.map

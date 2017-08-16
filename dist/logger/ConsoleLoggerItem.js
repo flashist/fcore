@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,8 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var BaseLoggerItem_1 = require("./BaseLoggerItem");
+import { BaseLoggerItem } from "./BaseLoggerItem";
 var ConsoleCustomLoggerItem = (function (_super) {
     __extends(ConsoleCustomLoggerItem, _super);
     function ConsoleCustomLoggerItem() {
@@ -45,6 +43,6 @@ var ConsoleCustomLoggerItem = (function (_super) {
         console.timeEnd(id);
     };
     return ConsoleCustomLoggerItem;
-}(BaseLoggerItem_1.BaseLoggerItem));
-exports.ConsoleCustomLoggerItem = ConsoleCustomLoggerItem;
+}(BaseLoggerItem));
+export { ConsoleCustomLoggerItem };
 //# sourceMappingURL=ConsoleLoggerItem.js.map

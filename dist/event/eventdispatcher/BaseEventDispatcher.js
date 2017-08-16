@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var EventEmitter = require("eventemitter3");
+import * as EventEmitter from "eventemitter3";
 var BaseEventDispatcher = (function () {
     function BaseEventDispatcher() {
         this.eventEmitter = new EventEmitter();
@@ -14,15 +12,10 @@ var BaseEventDispatcher = (function () {
     BaseEventDispatcher.prototype.removeEventListener = function (type, listener) {
         this.eventEmitter.removeListener(type, listener);
     };
-    BaseEventDispatcher.prototype.dispatchEvent = function (event) {
-        var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
-        }
-        (_a = this.eventEmitter).emit.apply(_a, [event].concat(args));
-        var _a;
+    BaseEventDispatcher.prototype.dispatchEvent = function (event, data) {
+        this.eventEmitter.emit(event, data);
     };
     return BaseEventDispatcher;
 }());
-exports.BaseEventDispatcher = BaseEventDispatcher;
+export { BaseEventDispatcher };
 //# sourceMappingURL=BaseEventDispatcher.js.map

@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var Rectangle = (function () {
     function Rectangle(x, y, width, height) {
         if (x === void 0) { x = 0; }
@@ -34,5 +32,5 @@ var Rectangle = (function () {
     ;
     return Rectangle;
 }());
-exports.Rectangle = Rectangle;
+export { Rectangle };
 //# sourceMappingURL=Rectangle.js.map

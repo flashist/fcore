@@ -1,10 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var KeyCodes = (function () {
     function KeyCodes() {
     }
     return KeyCodes;
 }());
+export { KeyCodes };
 KeyCodes.BACKSPACE = 8;
 KeyCodes.TAB = 9;
 KeyCodes.ENTER = 13;
@@ -77,5 +76,4 @@ KeyCodes.F12 = 123;
 KeyCodes.F13 = 124;
 KeyCodes.F14 = 125;
 KeyCodes.F15 = 126;
-exports.KeyCodes = KeyCodes;
 //# sourceMappingURL=KeyCodes.js.map

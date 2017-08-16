@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,8 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var BaseEventListenerObject_1 = require("../../baseobject/BaseEventListenerObject");
+import { BaseEventListenerObject } from "../../baseobject/BaseEventListenerObject";
 var BaseClassWrapper = (function (_super) {
     __extends(BaseClassWrapper, _super);
     function BaseClassWrapper() {
@@ -28,6 +26,6 @@ var BaseClassWrapper = (function (_super) {
         configurable: true
     });
     return BaseClassWrapper;
-}(BaseEventListenerObject_1.BaseEventListenerObject));
-exports.BaseClassWrapper = BaseClassWrapper;
+}(BaseEventListenerObject));
+export { BaseClassWrapper };
 //# sourceMappingURL=BaseClassWrapper.js.map
