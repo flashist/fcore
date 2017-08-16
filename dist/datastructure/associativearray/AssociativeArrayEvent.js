@@ -1,9 +1,8 @@
-"use strict";
 var AssociativeArrayEvent = (function () {
     function AssociativeArrayEvent() {
     }
-    AssociativeArrayEvent.CHANGE = "CHANGE";
     return AssociativeArrayEvent;
 }());
-exports.AssociativeArrayEvent = AssociativeArrayEvent;
+export { AssociativeArrayEvent };
+AssociativeArrayEvent.CHANGE = "CHANGE";
 //# sourceMappingURL=AssociativeArrayEvent.js.map

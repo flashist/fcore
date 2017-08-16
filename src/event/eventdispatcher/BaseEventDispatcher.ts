@@ -15,7 +15,7 @@ export class BaseEventDispatcher implements IEventDispatcher<string> {
     private eventEmitter:IEventEmitter;
 
     public constructor() {
-        this.eventEmitter = (new EventEmitter() as IEventEmitter);
+        this.eventEmitter = (new (EventEmitter as any)() as IEventEmitter);
     }
 
     addEventListener(type:string, listener:IEventListenerCallback<string>):void {

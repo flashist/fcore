@@ -1,8 +1,7 @@
-"use strict";
-var EventEmitter = require("eventemitter3");
+import * as EventEmitter from "eventemitter3";
 var BaseEventDispatcher = (function () {
     function BaseEventDispatcher() {
-        this.eventEmitter = (new EventEmitter());
+        this.eventEmitter = new EventEmitter();
     }
     BaseEventDispatcher.prototype.addEventListener = function (type, listener) {
         this.eventEmitter.addListener(type, listener);
@@ -18,5 +17,5 @@ var BaseEventDispatcher = (function () {
     };
     return BaseEventDispatcher;
 }());
-exports.BaseEventDispatcher = BaseEventDispatcher;
+export { BaseEventDispatcher };
 //# sourceMappingURL=BaseEventDispatcher.js.map

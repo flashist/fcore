@@ -1,4 +1,3 @@
-"use strict";
 var ArrayTools = (function () {
     function ArrayTools() {
     }
@@ -57,8 +56,8 @@ var ArrayTools = (function () {
         }
         list.splice(newIndex, 0, list.splice(oldIndex, 1)[0]);
     };
-    ArrayTools.REMOVE_COUNT_ALL = -1;
     return ArrayTools;
 }());
-exports.ArrayTools = ArrayTools;
+export { ArrayTools };
+ArrayTools.REMOVE_COUNT_ALL = -1;
 //# sourceMappingURL=ArrayTools.js.map

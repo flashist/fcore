@@ -1,4 +1,3 @@
-"use strict";
 var Point = (function () {
     function Point(x, y) {
         if (x === void 0) { x = 0; }
@@ -15,5 +14,5 @@ var Point = (function () {
     };
     return Point;
 }());
-exports.Point = Point;
+export { Point };
 //# sourceMappingURL=Point.js.map

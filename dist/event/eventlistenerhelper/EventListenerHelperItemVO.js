@@ -1,8 +1,7 @@
-"use strict";
 var EventListenerHelperItemVO = (function () {
     function EventListenerHelperItemVO() {
     }
     return EventListenerHelperItemVO;
 }());
-exports.EventListenerHelperItemVO = EventListenerHelperItemVO;
+export { EventListenerHelperItemVO };
 //# sourceMappingURL=EventListenerHelperItemVO.js.map

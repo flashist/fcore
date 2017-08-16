@@ -1,15 +1,19 @@
-"use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var AssociativeArrayEvent_1 = require("./AssociativeArrayEvent");
-var BaseObject_1 = require("../../baseobject/BaseObject");
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+import { AssociativeArrayEvent } from "./AssociativeArrayEvent";
+import { BaseObject } from "../../baseobject/BaseObject";
 var AssociativeArray = (function (_super) {
     __extends(AssociativeArray, _super);
     function AssociativeArray() {
-        _super.call(this);
+        return _super.call(this) || this;
     }
     AssociativeArray.prototype.construction = function () {
         _super.prototype.construction.call(this);
@@ -22,7 +26,7 @@ var AssociativeArray = (function (_super) {
         this.list = null;
     };
     AssociativeArray.prototype.dispatchChangeEvent = function () {
-        this.dispatchEvent(AssociativeArrayEvent_1.AssociativeArrayEvent.CHANGE);
+        this.dispatchEvent(AssociativeArrayEvent.CHANGE);
     };
     AssociativeArray.prototype.reset = function () {
         while (this.list.length > 0) {
@@ -118,6 +122,6 @@ var AssociativeArray = (function (_super) {
         return this.list.every(callback, thisArg);
     };
     return AssociativeArray;
-}(BaseObject_1.BaseObject));
-exports.AssociativeArray = AssociativeArray;
+}(BaseObject));
+export { AssociativeArray };
 //# sourceMappingURL=AssociativeArray.js.map

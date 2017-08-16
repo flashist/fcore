@@ -1,9 +1,8 @@
-"use strict";
-var Dictionary_1 = require("../../datastructure/Dictionary");
-var Logger_1 = require("../../logger/Logger");
+import { Dictionary } from "../../datastructure/Dictionary";
+import { Logger } from "../../logger/Logger";
 var ObjectsPool = (function () {
     function ObjectsPool() {
-        this.objectsToClassMap = new Dictionary_1.Dictionary();
+        this.objectsToClassMap = new Dictionary();
     }
     ObjectsPool.prototype.addObject = function (object, ObjectClass) {
         if (!object) {
@@ -22,11 +21,11 @@ var ObjectsPool = (function () {
         var tempArr = this.getObjectsByClass(ObjectClass);
         if (tempArr.length > 0) {
             result = tempArr.shift();
-            Logger_1.Logger.log("ObjectsPool | getObject __ OBJECT WAS GOT FROM POOL!");
+            Logger.log("ObjectsPool | getObject __ OBJECT WAS GOT FROM POOL!");
         }
         else {
             result = new ObjectClass();
-            Logger_1.Logger.log("ObjectsPool | getObject __ OBJECT WAS CREATED!");
+            Logger.log("ObjectsPool | getObject __ OBJECT WAS CREATED!");
         }
         return result;
     };
@@ -40,5 +39,5 @@ var ObjectsPool = (function () {
     };
     return ObjectsPool;
 }());
-exports.ObjectsPool = ObjectsPool;
+export { ObjectsPool };
 //# sourceMappingURL=ObjectsPool.js.map

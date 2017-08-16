@@ -1,4 +1,3 @@
-"use strict";
 var ObjectTools = (function () {
     function ObjectTools() {
     }
@@ -45,5 +44,5 @@ var ObjectTools = (function () {
     };
     return ObjectTools;
 }());
-exports.ObjectTools = ObjectTools;
+export { ObjectTools };
 //# sourceMappingURL=ObjectTools.js.map

@@ -1,4 +1,3 @@
-"use strict";
 var NumberTools = (function () {
     function NumberTools() {
     }
@@ -20,5 +19,5 @@ var NumberTools = (function () {
     };
     return NumberTools;
 }());
-exports.NumberTools = NumberTools;
+export { NumberTools };
 //# sourceMappingURL=NumberTools.js.map

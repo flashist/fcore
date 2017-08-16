@@ -1,19 +1,18 @@
-"use strict";
-var UniqueTools_1 = require("../tools/UniqueTools");
+import { UniqueTools } from "../tools/UniqueTools";
 var Dictionary = (function () {
     function Dictionary() {
         this.map = {};
     }
     Dictionary.prototype.getItem = function (key) {
-        var tempId = UniqueTools_1.UniqueTools.getObjectUniqueId(key);
+        var tempId = UniqueTools.getObjectUniqueId(key);
         var result = this.map[tempId];
         return result;
     };
     Dictionary.prototype.addItem = function (key, item) {
-        var tempId = UniqueTools_1.UniqueTools.getObjectUniqueId(key);
+        var tempId = UniqueTools.getObjectUniqueId(key);
         this.map[tempId] = item;
     };
     return Dictionary;
 }());
-exports.Dictionary = Dictionary;
+export { Dictionary };
 //# sourceMappingURL=Dictionary.js.map

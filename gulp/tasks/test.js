@@ -6,7 +6,7 @@ gulp.task(
     "test",
     function (cb) {
         tsProject.src()
-            .pipe(ts(tsProject))
+            .pipe(tsProject())
             .on(
                 "error",
                 function () {

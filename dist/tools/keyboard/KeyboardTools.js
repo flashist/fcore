@@ -1,4 +1,3 @@
-"use strict";
 var KeyboardTools = (function () {
     function KeyboardTools() {
     }
@@ -23,5 +22,5 @@ var KeyboardTools = (function () {
     };
     return KeyboardTools;
 }());
-exports.KeyboardTools = KeyboardTools;
+export { KeyboardTools };
 //# sourceMappingURL=KeyboardTools.js.map
