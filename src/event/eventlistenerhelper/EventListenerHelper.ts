@@ -4,7 +4,7 @@ import {IEventDispatcher} from "./IEventDispatcher";
 import {IEventListenerCallback} from "./IEventListenerCallback";
 import {ArrayTools} from "../../tools/ArrayTools";
 
-export class EventListenerHelper<EventType extends any> {
+export class EventListenerHelper<EventType extends any = any> {
     protected listenerThis:any;
 
     protected listenersByTypeMap:AssociativeArray<EventListenerHelperItemVO<EventType>[]>;

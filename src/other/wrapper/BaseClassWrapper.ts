@@ -1,5 +1,5 @@
 ﻿import {IBaseClassWrapper} from "./IBaseClassWrapper";
-import {BaseEventListenerObject} from "../../baseobject/BaseEventListenerObject";
+import {BaseEventListenerObject} from "../../event/eventlistener/BaseEventListenerObject";
 
 export class BaseClassWrapper extends BaseEventListenerObject implements IBaseClassWrapper {
     private _object:any;

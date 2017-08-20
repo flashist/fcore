@@ -9,6 +9,11 @@
   },
   "main": "index.js",
   "typings": "index.d.ts",
+
+  "scripts": {
+    "build": "gulp"
+  },
+
   "dependencies": {
     "eventemitter3": "^2.0.3"
   },

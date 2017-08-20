@@ -1,4 +1,4 @@
-﻿import {BaseEventListenerObject} from "../baseobject/BaseEventListenerObject";
+﻿import {BaseEventListenerObject} from "../event/eventlistener/BaseEventListenerObject";
 import {CommandEvent} from "./CommandEvent";
 import {CommandErrorCode} from "./CommandErrorCode";
 import {EventListenerHelper} from "../event/eventlistenerhelper/EventListenerHelper";

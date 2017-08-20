@@ -1,64 +1,8 @@
-﻿import {BaseEventDispatcher} from "../event/eventdispatcher/BaseEventDispatcher";
+﻿import {BaseEventListenerObjectExtendTools} from "../event/eventlistener/BaseEventListenerObjectExtendTools";
+import {BaseEventDispatcher} from "../event/eventdispatcher/BaseEventDispatcher";
+import {IConstructor} from "../other/IConstructor";
 
-export class BaseObject extends BaseEventDispatcher {
-    protected isConstructed:boolean;
+export const BaseObjectClass: IConstructor = (BaseEventListenerObjectExtendTools as any).extend(BaseEventDispatcher);
+export class BaseObject extends BaseObjectClass {
 
-    private _data:any;
-
-    constructor(...args) {
-        super();
-
-        this.construction(...args);
-        this.isConstructed = true;
-
-        this.addListeners();
-        this.commitData();
-    }
-
-
-    protected construction(...args):void {
-        // Note: subclasses should implement their own logic here
-    }
-
-    public destruction():void {
-        // Note: subclasses should implement their own logic here
-
-
-        this.removeListeners();
-    }
-
-
-    protected addListeners():void {
-        this.removeListeners();
-
-        // Note: subclasses should implement their own logic here
-    }
-
-    protected removeListeners():void {
-        // Note: subclasses should implement their own logic here
-    }
-
-
-    protected commitData():void {
-        // Note: subclasses should implement their own logic here
-    }
-
-    protected arrange():void {
-        // Note: subclasses should implement their own logic here
-    }
-
-
-    public get data():any {
-        return this._data;
-    }
-
-    public set data(value:any) {
-        if (this.data == value) {
-            return;
-        }
-
-        this._data = value;
-
-        this.commitData();
-    }
 }
