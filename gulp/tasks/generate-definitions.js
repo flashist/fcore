@@ -60,10 +60,12 @@ gulp.task(
                 .on(
                     "end",
                     () => {
-                        fs.writeFile(
+                        /*fs.writeFile(
                             argv.outDir + outFileName,
                             resultDeclarationText
-                        );
+                        );*/
+                        console.log("Declarations: ");
+                        console.log(resultDeclarationText);
                     }
                 );
     }

@@ -1,3 +1,3 @@
 export interface IConstructor<InstanceType extends any = any> {
-    new (...args):InstanceType;
+    new (...args): InstanceType;
 }

@@ -29,6 +29,6 @@
     "rimraf": "^2.6.1",
     "run-sequence": "^1.2.2",
     "ts-loader": "^2.2.0",
-    "typescript": "2.3.x"
+    "typescript": "2.4.x"
   }
 }

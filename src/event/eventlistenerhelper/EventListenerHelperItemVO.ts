@@ -1,5 +1,7 @@
-﻿import {IEventDispatcher} from "./IEventDispatcher";
-import {IEventListenerCallback} from "./IEventListenerCallback";
+﻿import {
+    IEventDispatcher,
+    IEventListenerCallback
+} from "../../index";
 
 export class EventListenerHelperItemVO<EventType> {
     public dispatcher:IEventDispatcher<EventType>;
