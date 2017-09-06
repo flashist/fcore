@@ -3,9 +3,9 @@ import {IConstructor} from "../other/IConstructor";
 export class BaseObjectExtendTools {
     static extend<BaseType extends IConstructor>(BaseClass: BaseType) {
         return class ResultClass extends BaseClass {
-            protected isConstructed:boolean;
+            protected isConstructed: boolean;
 
-            private _data:any;
+            private _data: any;
 
             constructor(...args) {
                 super();
@@ -18,11 +18,11 @@ export class BaseObjectExtendTools {
             }
 
 
-            protected construction(...args):void {
+            protected construction(...args): void {
                 // Note: subclasses should implement their own logic here
             }
 
-            public destruction():void {
+            public destruction(): void {
                 // Note: subclasses should implement their own logic here
 
 
@@ -30,31 +30,31 @@ export class BaseObjectExtendTools {
             }
 
 
-            protected addListeners():void {
+            protected addListeners(): void {
                 this.removeListeners();
 
                 // Note: subclasses should implement their own logic here
             }
 
-            protected removeListeners():void {
+            protected removeListeners(): void {
                 // Note: subclasses should implement their own logic here
             }
 
 
-            protected commitData():void {
+            protected commitData(): void {
                 // Note: subclasses should implement their own logic here
             }
 
-            protected arrange():void {
+            protected arrange(): void {
                 // Note: subclasses should implement their own logic here
             }
 
 
-            public get data():any {
+            public get data(): any {
                 return this._data;
             }
 
-            public set data(value:any) {
+            public set data(value: any) {
                 if (this.data == value) {
                     return;
                 }
