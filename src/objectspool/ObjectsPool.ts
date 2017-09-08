@@ -1,5 +1,5 @@
-﻿import {Dictionary} from "../../datastructure/Dictionary";
-import {Logger} from "../../logger/Logger";
+﻿import {Dictionary} from "../datastructure/Dictionary";
+import {Logger} from "../logger/Logger";
 export class ObjectsPool {
     protected objectsToClassMap:Dictionary<any, any>;
 
