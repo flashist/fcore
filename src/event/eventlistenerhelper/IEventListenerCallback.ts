@@ -1,3 +1,3 @@
-export interface IEventListenerCallback<EventType> extends Function {
-    (event:EventType, data?:any): void;
+export interface IEventListenerCallback extends Function {
+    (...args): void;
 }

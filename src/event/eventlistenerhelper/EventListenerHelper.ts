@@ -1,61 +1,67 @@
 ﻿import {
     ArrayTools,
     IEventListenerCallback,
-    IEventDispatcher,
+    IDefaultEventDispatcher,
     EventListenerHelperItemVO,
     AssociativeArray
 } from "../../index";
+import {EventsHelperTools} from "../tools/EventsHelperTools";
 
 export class EventListenerHelper<EventType extends any = any> {
-    protected listenerThis:any;
+    protected listenerThis: any;
 
-    protected listenersByTypeMap:AssociativeArray<EventListenerHelperItemVO<EventType>[]>;
+    protected listenersByTypeMap: AssociativeArray<EventListenerHelperItemVO<EventType>[]>;
 
-    constructor(listenerThis?:any) {
+    constructor(listenerThis?: any) {
         this.listenerThis = listenerThis;
 
         this.construction();
     }
 
-    protected construction():void {
+    protected construction(): void {
         this.listenersByTypeMap = new AssociativeArray<EventListenerHelperItemVO<EventType>[]>();
     }
 
-    public destruction():void {
+    public destruction(): void {
         this.removeAllListeners();
         this.listenerThis = null;
     }
 
 
-    public addEventListener(
-        dispatcher:IEventDispatcher<EventType>,
-        type:string,
-        listener:IEventListenerCallback<EventType>):void {
+    public addEventListener(dispatcher: IDefaultEventDispatcher<EventType>,
+                            type: string,
+                            listener: IEventListenerCallback): void {
 
-        var tempListeners:EventListenerHelperItemVO<EventType>[] = this.getEventListeners(type);
+        var tempListeners: EventListenerHelperItemVO<EventType>[] = this.getEventListeners(type);
 
-        var tempListenerData:EventListenerHelperItemVO<EventType> = new EventListenerHelperItemVO<EventType>();
+        var tempListenerData: EventListenerHelperItemVO<EventType> = new EventListenerHelperItemVO<EventType>();
         tempListenerData.dispatcher = dispatcher;
         tempListenerData.type = type;
         tempListenerData.listener = listener.bind(this.listenerThis);
         tempListenerData.sourceListener = listener;
         tempListeners.push(tempListenerData);
         //
-        dispatcher.addEventListener(type, tempListenerData.listener);
+        // dispatcher.addEventListener(type, tempListenerData.listener);
+        EventsHelperTools.addEventListener(
+            dispatcher,
+            type,
+            tempListenerData.listener
+        );
     }
 
-    public removeEventListener(dispatcher:IEventDispatcher<EventType>,
-                               type:string,
-                               listener:IEventListenerCallback<EventType>):void {
-        var tempListeners:EventListenerHelperItemVO<EventType>[] = this.getEventListeners(type);
+    public removeEventListener(dispatcher: IDefaultEventDispatcher<EventType>,
+                               type: string,
+                               listener: IEventListenerCallback): void {
+        var tempListeners: EventListenerHelperItemVO<EventType>[] = this.getEventListeners(type);
         //CustomLogger.log("EventListenerHelper | removeEventListener __ start __ tempListeners.length: " + tempListeners.length);
 
         tempListeners.filter(
-            (item:EventListenerHelperItemVO<EventType>, index:number, array:EventListenerHelperItemVO<EventType>[]):boolean => {
-                var result:boolean = true;
+            (item: EventListenerHelperItemVO<EventType>, index: number, array: EventListenerHelperItemVO<EventType>[]): boolean => {
+                var result: boolean = true;
 
                 if (item.dispatcher == dispatcher && item.sourceListener == listener) {
-                    item.dispatcher.removeEventListener(
+                    EventsHelperTools.removeEventListener(
+                        item.dispatcher,
                         item.type,
                         item.listener
                     );
@@ -71,26 +77,31 @@ export class EventListenerHelper<EventType extends any = any> {
         //CustomLogger.log("EventListenerHelper | removeEventListener __ end __ tempListeners.length: " + tempListeners.length);
     }
 
-    public removeAllListeners(dispatcher?:IEventDispatcher<EventType>):void {
+    public removeAllListeners(dispatcher?: IDefaultEventDispatcher<EventType>): void {
         //CustomLogger.log("EventListenerHelper | removeAllListeners");
 
-        var listenersByTypeList:EventListenerHelperItemVO<EventType>[][] = this.listenersByTypeMap.getAllItems();
-        var listenersList:EventListenerHelperItemVO<EventType>[] = [];
+        var listenersByTypeList: EventListenerHelperItemVO<EventType>[][] = this.listenersByTypeMap.getAllItems();
+        var listenersList: EventListenerHelperItemVO<EventType>[] = [];
 
         listenersByTypeList.forEach(
-            (item:EventListenerHelperItemVO<EventType>[], index:number, array:EventListenerHelperItemVO<EventType>[][]):void => {
+            (item: EventListenerHelperItemVO<EventType>[], index: number, array: EventListenerHelperItemVO<EventType>[][]): void => {
                 //CustomLogger.log("EventListenerHelper | removeAllListeners __ start __ item.length: " + item.length);
 
                 // Make a copy of the item, to prevent possible problems with loop and array,
                 // because we plan to remove items from it
-                var typeListenersCopy:EventListenerHelperItemVO<EventType>[] = item.concat();
+                var typeListenersCopy: EventListenerHelperItemVO<EventType>[] = item.concat();
                 //
-                var tempListenerData:EventListenerHelperItemVO<EventType>;
-                var listenersCount:number = typeListenersCopy.length;
-                for (var listenerIndex:number = 0; listenerIndex < listenersCount; listenerIndex++) {
+                var tempListenerData: EventListenerHelperItemVO<EventType>;
+                var listenersCount: number = typeListenersCopy.length;
+                for (var listenerIndex: number = 0; listenerIndex < listenersCount; listenerIndex++) {
                     tempListenerData = typeListenersCopy[listenerIndex];
                     if (!dispatcher || tempListenerData.dispatcher == dispatcher) {
-                        tempListenerData.dispatcher.removeEventListener(
+                        /*tempListenerData.dispatcher.removeEventListener(
+                            tempListenerData.type,
+                            tempListenerData.listener
+                        );*/
+                        EventsHelperTools.addEventListener(
+                            tempListenerData.dispatcher,
                             tempListenerData.type,
                             tempListenerData.listener
                         );
@@ -106,12 +117,12 @@ export class EventListenerHelper<EventType extends any = any> {
         );
     }
 
-    protected getEventListeners(type:string):EventListenerHelperItemVO<EventType>[] {
+    protected getEventListeners(type: string): EventListenerHelperItemVO<EventType>[] {
         if (!this.listenersByTypeMap.containsKey(type)) {
             this.listenersByTypeMap.push([], type);
         }
 
-        var result:EventListenerHelperItemVO<EventType>[] = this.listenersByTypeMap.getItem(type);
+        var result: EventListenerHelperItemVO<EventType>[] = this.listenersByTypeMap.getItem(type);
         return result;
     }
 

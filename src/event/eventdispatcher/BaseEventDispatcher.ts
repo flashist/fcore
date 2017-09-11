@@ -18,7 +18,7 @@ export class BaseEventDispatcher implements IEventDispatcher<string> {
         this.eventEmitter = (new (EventEmitter as any)() as IEventEmitter);
     }
 
-    addEventListener(type: string, listener: IEventListenerCallback<string>): void {
+    addEventListener(type: string, listener: IEventListenerCallback): void {
         this.eventEmitter.addListener(type, listener as Function);
     }
 
@@ -26,7 +26,7 @@ export class BaseEventDispatcher implements IEventDispatcher<string> {
         this.eventEmitter.removeAllListeners(type);
     }
 
-    removeEventListener(type: string, listener: IEventListenerCallback<string>): void {
+    removeEventListener(type: string, listener: IEventListenerCallback): void {
         this.eventEmitter.removeListener(type, listener as Function);
     }
 
