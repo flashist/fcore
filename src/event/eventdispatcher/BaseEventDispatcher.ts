@@ -14,7 +14,7 @@ declare type IEventEmitter = {
 export class BaseEventDispatcher implements IEventDispatcher<string> {
     private eventEmitter: IEventEmitter;
 
-    public constructor() {
+    public constructor(...args) {
         this.eventEmitter = (new (EventEmitter as any)() as IEventEmitter);
     }
 

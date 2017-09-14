@@ -50,7 +50,7 @@ export class BaseDataVO extends BaseObject {
     }
 
     public changeSourceData(changesData:any):void {
-        ObjectTools.copyProps(this.sourceData, changesData, true);
+        ObjectTools.copyProps(this.sourceData, changesData);
 
         this.commitSourceData();
     }

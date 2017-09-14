@@ -1,11 +1,11 @@
-﻿import {BaseEventListenerObject} from "../event/eventlistener/BaseEventListenerObject";
-import {CommandEvent} from "./CommandEvent";
+﻿import {CommandEvent} from "./CommandEvent";
 import {CommandErrorCode} from "./CommandErrorCode";
 import {EventListenerHelper} from "../event/eventlistenerhelper/EventListenerHelper";
 import {Logger} from "../logger/Logger";
 import {ArrayTools} from "../tools/ArrayTools";
+import {BaseObject} from "../baseobject/BaseObject";
 
-export class Command extends BaseEventListenerObject {
+export class Command extends BaseObject {
 
     protected static cache:Command[] = [];
 

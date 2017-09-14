@@ -1,20 +1,18 @@
 ﻿import {AssociativeArrayEvent} from "./AssociativeArrayEvent";
-import {BaseObject} from "../../baseobject/BaseObject";
+import {BaseEventDispatcher} from "../../event/eventdispatcher/BaseEventDispatcher";
 
-export class AssociativeArray<ValueType> extends BaseObject {
+export class AssociativeArray<ValueType> extends BaseEventDispatcher {
     protected map: { [key: string]: ValueType };
     protected list: ValueType[];
 
-    public construction(): void {
-        super.construction();
+    public constructor() {
+        super();
 
         this.map = {};
         this.list = [];
     }
 
     public destruction(): void {
-        super.destruction();
-
         this.map = null;
         this.list = null;
     }
