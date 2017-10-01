@@ -1,5 +1,5 @@
 ﻿export class ObjectTools {
-    public static copyProps(to: any, from: any, recursive: boolean = true): boolean {
+    public static copyProps(to: any, from: any): boolean {
         var result: boolean = false;
 
         var propNames: string[] = Object.keys(from);
@@ -21,16 +21,26 @@
 
     static copySingleProp(to: any, from: any, paramName: string): void {
         if (Array.isArray(from[paramName])) {
+            let tempList = to[paramName];
             if (!to[paramName]) {
-                to[paramName] = [];
+                tempList = [];
             }
-            ObjectTools.copyProps(from[paramName], to[paramName]);
+            ObjectTools.copyProps(tempList, from[paramName]);
+
+            if (!to[paramName]) {
+                to[paramName] = tempList;
+            }
 
         } else if (ObjectTools.isObject(from[paramName])) {
+            let tempObj = to[paramName];
             if (!to[paramName]) {
-                to[paramName] = {};
+                tempObj = {};
             }
-            ObjectTools.copyProps(from[paramName], to[paramName]);
+            ObjectTools.copyProps(to[paramName], from[paramName]);
+
+            if (!to[paramName]) {
+                to[paramName] = tempObj;
+            }
 
         } else {
             to[paramName] = from[paramName];
