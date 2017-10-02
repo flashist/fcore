@@ -10,11 +10,11 @@ export class BaseObject extends BaseObjectClass {
 import {BaseEventDispatcher} from "../event/eventdispatcher/BaseEventDispatcher";
 import {EventListenerHelper} from "../event/eventlistenerhelper/EventListenerHelper";
 
-export class BaseObject extends BaseEventDispatcher {
+export class BaseObject<DataType extends object = object> extends BaseEventDispatcher {
 
     protected isConstructed: boolean;
 
-    private _data: any;
+    private _data: DataType;
 
     protected eventListenerHelper:EventListenerHelper<Event | string | any>;
 
@@ -66,11 +66,10 @@ export class BaseObject extends BaseEventDispatcher {
     }
 
 
-    public get data(): any {
+    public get data(): DataType {
         return this._data;
     }
-
-    public set data(value: any) {
+    public set data(value: DataType) {
         if (this.data == value) {
             return;
         }
