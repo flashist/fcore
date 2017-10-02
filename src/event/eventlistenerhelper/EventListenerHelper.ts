@@ -12,7 +12,7 @@ export class EventListenerHelper<EventType extends any = any> {
 
     protected listenersByTypeMap: AssociativeArray<EventListenerHelperItemVO<EventType>[]>;
 
-    constructor(listenerThis?: any) {
+    constructor(listenerThis: any) {
         this.listenerThis = listenerThis;
 
         this.construction();
