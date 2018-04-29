@@ -5,38 +5,38 @@ import {IEventDispatcher} from "../eventlistenerhelper/IEventDispatcher";
 export class EventsHelperTools {
 
     static addEventListener(dispatcher: IDefaultEventDispatcher, type: string, listener: IEventListenerCallback): void {
-        const emitter = (dispatcher as IEventEmitter);
-        if (emitter.on) {
-            emitter.on(type, listener);
+        const emitter = (dispatcher as IEventDispatcher);
+        if (emitter.addEventListener) {
+            emitter.addEventListener(type, listener);
         } else {
-            (dispatcher as IEventDispatcher).addEventListener(type, listener);
+            (dispatcher as IEventEmitter).on(type, listener);
         }
     }
 
     static removeEventListener(dispatcher: IDefaultEventDispatcher, type: string, listener: IEventListenerCallback): void {
-        const emitter = (dispatcher as IEventEmitter);
-        if (emitter.off) {
-            emitter.off(type, listener);
+        const emitter = (dispatcher as IEventDispatcher);
+        if (emitter.removeEventListener) {
+            emitter.removeEventListener(type, listener);
         } else {
-            (dispatcher as IEventDispatcher).removeEventListener(type, listener);
+            (dispatcher as IEventEmitter).off(type, listener);
         }
     }
 
     static removeAllEventListeners(dispatcher: IDefaultEventDispatcher, type?: string): void {
-        const emitter = (dispatcher as IEventEmitter);
-        if (emitter.removeAllListeners) {
-            emitter.removeAllListeners(type);
+        const emitter = (dispatcher as IEventDispatcher);
+        if (emitter.removeAllEventListeners) {
+            emitter.removeAllEventListeners(type);
         } else {
-            (dispatcher as IEventDispatcher).removeAllEventListeners(type);
+            (dispatcher as IEventEmitter).removeAllListeners(type);
         }
     }
 
     static dispatch(dispatcher: IDefaultEventDispatcher, event: any, ...args): void {
-        const emitter = (dispatcher as IEventEmitter);
-        if (emitter.emit) {
-            emitter.emit(event, ...args);
+        const emitter = (dispatcher as IEventDispatcher);
+        if (emitter.dispatchEvent) {
+            emitter.dispatchEvent(event, ...args);
         } else {
-            (dispatcher as IEventDispatcher).dispatchEvent(event, ...args);
+            (dispatcher as IEventEmitter).emit(event, ...args);
         }
     }
 }

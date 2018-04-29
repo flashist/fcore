@@ -52,10 +52,31 @@ export class EventListenerHelper<EventType extends any = any> {
     public removeEventListener(dispatcher: IDefaultEventDispatcher<EventType>,
                                type: string,
                                listener: IEventListenerCallback): void {
-        var tempListeners: EventListenerHelperItemVO<EventType>[] = this.getEventListeners(type);
+
+        let removedListeners: any[] = [];
+        let listenerVO: EventListenerHelperItemVO<EventType>;
+        let listenersByType: EventListenerHelperItemVO<EventType>[] = this.getEventListeners(type);
+        let listenersByTypeCount: number = listenersByType.length;
+
+        for (let listenersByTypeIndex: number = 0; listenersByTypeIndex < listenersByTypeCount; listenersByTypeIndex++) {
+            listenerVO = listenersByType[listenersByTypeIndex];
+
+            if (listenerVO.dispatcher == dispatcher && listenerVO.sourceListener == listener) {
+                EventsHelperTools.removeEventListener(
+                    listenerVO.dispatcher,
+                    listenerVO.type,
+                    listenerVO.listener
+                );
+
+                removedListeners.push(listenerVO);
+            }
+        }
+
+        ArrayTools.removeItems(listenersByType, removedListeners);
+
         //CustomLogger.log("EventListenerHelper | removeEventListener __ start __ tempListeners.length: " + tempListeners.length);
 
-        tempListeners.filter(
+        /*tempListeners.filter(
             (item: EventListenerHelperItemVO<EventType>, index: number, array: EventListenerHelperItemVO<EventType>[]): boolean => {
                 var result: boolean = true;
 
@@ -72,13 +93,35 @@ export class EventListenerHelper<EventType extends any = any> {
 
                 return result;
             }
-        );
+        );*/
 
         //CustomLogger.log("EventListenerHelper | removeEventListener __ end __ tempListeners.length: " + tempListeners.length);
     }
 
     public removeAllListeners(dispatcher?: IDefaultEventDispatcher<EventType>): void {
-        //CustomLogger.log("EventListenerHelper | removeAllListeners");
+
+        let listenersByTypeList: EventListenerHelperItemVO<EventType>[][] = this.listenersByTypeMap.getAllItems();
+        let listenersByTypeListCount: number = listenersByTypeList.length;
+        for (let listenersByTypeIndex: number = 0; listenersByTypeIndex < listenersByTypeListCount; listenersByTypeIndex++) {
+
+            let tempListenerData: EventListenerHelperItemVO<EventType>;
+
+            let listenersByType: EventListenerHelperItemVO<EventType>[] = listenersByTypeList[listenersByTypeIndex].concat();
+            let listenersCount: number = listenersByType.length;
+            for (let listenerIndex: number = 0; listenerIndex < listenersCount; listenerIndex++) {
+                tempListenerData = listenersByType[listenerIndex];
+
+                if (!dispatcher || tempListenerData.dispatcher == dispatcher) {
+                    this.removeEventListener(
+                        tempListenerData.dispatcher,
+                        tempListenerData.type,
+                        tempListenerData.sourceListener
+                    );
+                }
+            }
+        }
+
+        /*//CustomLogger.log("EventListenerHelper | removeAllListeners");
 
         var listenersByTypeList: EventListenerHelperItemVO<EventType>[][] = this.listenersByTypeMap.getAllItems();
         var listenersList: EventListenerHelperItemVO<EventType>[] = [];
@@ -96,11 +139,11 @@ export class EventListenerHelper<EventType extends any = any> {
                 for (var listenerIndex: number = 0; listenerIndex < listenersCount; listenerIndex++) {
                     tempListenerData = typeListenersCopy[listenerIndex];
                     if (!dispatcher || tempListenerData.dispatcher == dispatcher) {
-                        /*tempListenerData.dispatcher.removeEventListener(
+                        /!*!/!*tempListenerData.dispatcher.removeEventListener(
                             tempListenerData.type,
                             tempListenerData.listener
-                        );*/
-                        EventsHelperTools.addEventListener(
+                        );*!/
+                        EventsHelperTools.removeEventListener(
                             tempListenerData.dispatcher,
                             tempListenerData.type,
                             tempListenerData.listener
@@ -108,13 +151,14 @@ export class EventListenerHelper<EventType extends any = any> {
 
                         // Remove information about listener from the list,
                         // to release the memory used by this item
-                        ArrayTools.removeItem(item, tempListenerData);
+                        ArrayTools.removeItem(item, tempListenerData);*!/
+                        this.removeEventListener(tempListenerData.dispatcher, tempListenerData.type, tempListenerData.sourceListener);
                     }
                 }
 
                 //CustomLogger.log("EventListenerHelper | removeAllListeners __ end __ item.length: " + item.length);
             }
-        );
+        );*/
     }
 
     protected getEventListeners(type: string): EventListenerHelperItemVO<EventType>[] {
