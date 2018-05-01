@@ -5,24 +5,24 @@ import {Logger} from "../logger/Logger";
 import {ArrayTools} from "../tools/ArrayTools";
 import {BaseObject} from "../baseobject/BaseObject";
 
-export class Command extends BaseObject {
+export class Command<ResolveType = any> extends BaseObject {
 
-    protected static cache:Command[] = [];
+    protected static cache: Command[] = [];
 
-    protected _isExecuting:boolean;
-    public get isExecuting():boolean {
+    protected _isExecuting: boolean;
+    public get isExecuting(): boolean {
         return this._isExecuting;
     }
 
-    protected _isCompleted:boolean;
-    public get isCompleted():boolean {
+    protected _isCompleted: boolean;
+    public get isCompleted(): boolean {
         return this._isCompleted;
     }
 
-    public errorCode:string;
+    public errorCode: string;
 
-    private promiseResolve:(result?:any)=>void;
-    private promiseReject:(errorCode?:string)=>void;
+    private promiseResolve: (result?: ResolveType) => void;
+    private promiseReject: (errorCode?: string) => void;
 
     constructor() {
         super();
@@ -31,11 +31,11 @@ export class Command extends BaseObject {
         this.eventListenerHelper = new EventListenerHelper(this);
     }
 
-    public execute():Promise<any> {
+    public execute(): Promise<ResolveType> {
         console.log("Action | execute __ name: " + this.constructor['name']);
 
-        return new Promise<any>(
-            (resolve:(result:any)=>void, reject:()=>void) => {
+        return new Promise<ResolveType>(
+            (resolve: (result: ResolveType) => void, reject: () => void) => {
                 this.promiseResolve = resolve;
                 this.promiseReject = reject;
 
@@ -56,12 +56,12 @@ export class Command extends BaseObject {
     }
 
 
-    protected executeInternal():void {
+    protected executeInternal(): void {
         // Note: subclasses should implement their own logic
     }
 
 
-    protected notifyComplete(resolveData?:any, rejectErrorData?:any):void {
+    protected notifyComplete(resolveData?: ResolveType, rejectErrorData?: any): void {
         this._isExecuting = false;
 
         if (!this.isCompleted) {
@@ -85,17 +85,17 @@ export class Command extends BaseObject {
         this.destruction();
     }
 
-    public terminate():void {
+    public terminate(): void {
         if (!this.errorCode) {
             this.errorCode = CommandErrorCode.TERMINATE;
         }
 
-        this.notifyComplete(Error(this.errorCode));
+        this.notifyComplete(null, Error(this.errorCode));
     }
 
 
-    public get success():boolean {
-        var result:boolean = false;
+    public get success(): boolean {
+        var result: boolean = false;
         if (this.errorCode == CommandErrorCode.NO_ERROR) {
             result = true;
         }
