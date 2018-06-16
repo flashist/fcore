@@ -4,8 +4,8 @@ import {BaseObject} from "./BaseObject";
 
 export class BaseDataVO extends BaseObject {
 
-    public objectType:string = "";
-    public objectId:string = "";
+    public type:string = "";
+    public id:string = "";
 
     private sourceData:any = {};
 
