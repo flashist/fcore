@@ -5,7 +5,7 @@ export class UniqueTools {
     protected static DEFAULT_POOL_ID: string = "defaultPoolId";
 
     protected static globalUniqueId: number = 0;
-    protected static uniqueIdByPool: {[key: string]: number};
+    protected static uniqueIdByPool: {[key: string]: number} = {};
 
     public static getObjectUniqueId(object: any): string {
         if (!object.hasOwnProperty(UniqueTools.UNIQUE_ID_PROP_NAME)) {
