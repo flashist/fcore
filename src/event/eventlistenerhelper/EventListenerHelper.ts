@@ -12,7 +12,7 @@ export class EventListenerHelper<EventType extends any = any> {
 
     protected listenersByTypeMap: AssociativeArray<EventListenerHelperItemVO<EventType>[]>;
 
-    constructor(listenerThis: any) {
+    constructor(listenerThis?: any) {
         this.listenerThis = listenerThis;
 
         this.construction();
@@ -37,7 +37,11 @@ export class EventListenerHelper<EventType extends any = any> {
         var tempListenerData: EventListenerHelperItemVO<EventType> = new EventListenerHelperItemVO<EventType>();
         tempListenerData.dispatcher = dispatcher;
         tempListenerData.type = type;
-        tempListenerData.listener = listener.bind(this.listenerThis);
+        if (this.listenerThis) {
+            tempListenerData.listener = listener.bind(this.listenerThis);
+        } else {
+            tempListenerData.listener = this.listenerThis;
+        }
         tempListenerData.sourceListener = listener;
         tempListeners.push(tempListenerData);
         //
