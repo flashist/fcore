@@ -21,6 +21,16 @@ export class Dictionary<KeyType, ItemType> {
         this.keys.push(key);
     }
 
+    public removeItemByKey(key: KeyType): boolean {
+        var tempId: string = UniqueTools.getObjectUniqueId(key);
+        const result: boolean = !!this.map[tempId];
+        if (result) {
+            delete this.map[tempId];
+        }
+
+        return result;
+    }
+
     public getKeys(): KeyType[] {
         return this.keys.concat();
     }
