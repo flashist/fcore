@@ -75,4 +75,8 @@
             return false;
         }
     }
+
+    public static getConstructorName(object: any): string {
+        return (object && object.constructor && object.constructor.name) ? object.constructor.name : "";
+    }
 }
