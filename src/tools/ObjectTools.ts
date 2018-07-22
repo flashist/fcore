@@ -1,5 +1,5 @@
 ﻿export class ObjectTools {
-    public static copyProps(to: any, from: any): boolean {
+    public static copyProps(to: any, from: any, ignoreExistedProperties: boolean = false): boolean {
         var result: boolean = false;
 
         var propNames: string[] = Object.keys(from);
@@ -9,10 +9,17 @@
             propName = propNames[propIndex];
 
             if (to[propName] != from[propName]) {
-                ObjectTools.copySingleProp(to, from, propName);
 
-                // Remember that change was made
-                result = true;
+                // Check additionally for existed properties,
+                // if the settings are set correspondingly
+                if (!ignoreExistedProperties ||
+                    (ignoreExistedProperties && to[propName] === undefined)) {
+
+                    ObjectTools.copySingleProp(to, from, propName);
+
+                    // Remember that change was made
+                    result = true;
+                }
             }
         }
 
@@ -32,15 +39,10 @@
             }
 
         } else if (ObjectTools.isObject(from[paramName])) {
-            let tempObj = to[paramName];
             if (!to[paramName]) {
-                tempObj = {};
+                to[paramName] = {};
             }
             ObjectTools.copyProps(to[paramName], from[paramName]);
-
-            if (!to[paramName]) {
-                to[paramName] = tempObj;
-            }
 
         } else {
             to[paramName] = from[paramName];

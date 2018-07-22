@@ -21,14 +21,15 @@ export class UniqueTools {
             poolId = UniqueTools.DEFAULT_POOL_ID;
         }
 
-        if (UniqueTools.uniqueIdByPool[poolId] === NumberTools.MAX_SAFE_INTEGER) {
-            UniqueTools.uniqueIdByPool[poolId] = 0;
-        } else {
-            UniqueTools.uniqueIdByPool[poolId]++;
-        }
 
         if (!UniqueTools.uniqueIdByPool[poolId] && UniqueTools.uniqueIdByPool[poolId] !== 0) {
             UniqueTools.uniqueIdByPool[poolId] = 0;
+
+        } else if (UniqueTools.uniqueIdByPool[poolId] === NumberTools.MAX_SAFE_INTEGER) {
+            UniqueTools.uniqueIdByPool[poolId] = 0;
+
+        } else {
+            UniqueTools.uniqueIdByPool[poolId]++;
         }
 
         return UniqueTools.uniqueIdByPool[poolId].toString();
