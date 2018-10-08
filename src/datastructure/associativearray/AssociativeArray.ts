@@ -1,5 +1,6 @@
 ﻿import {AssociativeArrayEvent} from "./AssociativeArrayEvent";
 import {BaseEventDispatcher} from "../../event/eventdispatcher/BaseEventDispatcher";
+import {ObjectTools} from "../..";
 
 export class AssociativeArray<ValueType> extends BaseEventDispatcher {
     protected map: { [key: string]: ValueType };
@@ -133,24 +134,38 @@ export class AssociativeArray<ValueType> extends BaseEventDispatcher {
         return this.list.concat();
     }
 
+    public getAllKeys(): string[] {
+        return Object.keys(this.map);
+    }
+
     public get length(): number {
         return this.list.length;
     }
 
 
-    public forEach(callback: (value: ValueType, index: number, array: ValueType[]) => void,
-                   thisArg?: any): void {
+    public forEach(
+        callback: (value: ValueType, index: number, array: ValueType[]) => void,
+        thisArg?: any): void {
 
         this.list.forEach(callback, thisArg);
     }
 
-    public every(callback: (value: ValueType, index: number, array: ValueType[]) => boolean,
-                 thisArg?: any): boolean {
+    public every(
+        callback: (value: ValueType, index: number, array: ValueType[]) => boolean,
+        thisArg?: any): boolean {
 
         return this.list.every(callback, thisArg);
     }
 
     public sort(compare: (item1: ValueType, item2: ValueType) => number): void {
         this.list.sort(compare);
+    }
+
+    public clone(): AssociativeArray<ValueType> {
+        let result: AssociativeArray<ValueType> = new AssociativeArray<ValueType>();
+        result.list = this.list.concat();
+        ObjectTools.copyProps(result.map, this.map);
+
+        return result;
     }
 }
