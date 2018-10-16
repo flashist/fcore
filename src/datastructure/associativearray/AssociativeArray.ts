@@ -71,7 +71,7 @@ export class AssociativeArray<ValueType> extends BaseEventDispatcher {
         var removedItem: ValueType = removedList[index];
 
         var key: string = this.getItemKey(removedItem);
-        this.map[key] = null;
+        delete this.map[key];
 
         //
         this.dispatchChangeEvent();
