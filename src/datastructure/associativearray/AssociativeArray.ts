@@ -68,7 +68,7 @@ export class AssociativeArray<ValueType> extends BaseEventDispatcher {
 
     public removeByIndex(index: number): void {
         var removedList: ValueType[] = this.list.splice(index, 1);
-        var removedItem: ValueType = removedList[index];
+        var removedItem: ValueType = removedList[0];
 
         var key: string = this.getItemKey(removedItem);
         delete this.map[key];
@@ -125,7 +125,6 @@ export class AssociativeArray<ValueType> extends BaseEventDispatcher {
                 break;
             }
         }
-
 
         return result;
     }
