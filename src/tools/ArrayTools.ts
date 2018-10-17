@@ -112,4 +112,13 @@ export class ArrayTools {
 
         return randObj;
     }
+
+    public static getUniqueItems(list: any[]): any[] {
+        let result: any[] = list.filter(ArrayTools.removeDuplicatesFilter);
+        return result;
+    }
+
+    protected static removeDuplicatesFilter(item: any, index: number, list: any): boolean {
+        return (index == 0) ? true : list.lastIndexOf(item, index - 1) == -1;
+    }
 }
