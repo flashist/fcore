@@ -48,6 +48,9 @@ export class Command<ResolveType = any> extends BaseObject {
 
                 if (Command.cache.indexOf(this) == -1) {
                     Command.cache.push(this);
+                    if (Command.cache.length > 100) {
+                        Logger.log("Command | execute __WARNING! Too many commands in the cache!");
+                    }
                 }
 
                 this.executeInternal();
