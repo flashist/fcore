@@ -32,7 +32,7 @@ export class Command<ResolveType = any> extends BaseObject {
     }
 
     public execute(): Promise<ResolveType> {
-        console.log("Action | execute __ name: " + this.constructor['name']);
+        // console.log("Action | execute __ name: " + this.constructor['name']);
 
         return new Promise<ResolveType>(
             (resolve: (result: ResolveType) => void, reject: () => void) => {
@@ -40,7 +40,7 @@ export class Command<ResolveType = any> extends BaseObject {
                 this.promiseReject = reject;
 
                 if (this.isExecuting || this.isCompleted) {
-                    Logger.log("Command | execute", "WARNING! Second execute while executing or complete! this.isExecuting: " + this.isExecuting + " | this.isCompleted: " + this.isCompleted);
+                    // Logger.log("Command | execute", "WARNING! Second execute while executing or complete! this.isExecuting: " + this.isExecuting + " | this.isCompleted: " + this.isCompleted);
                     return;
                 }
 
@@ -49,7 +49,7 @@ export class Command<ResolveType = any> extends BaseObject {
                 if (Command.cache.indexOf(this) == -1) {
                     Command.cache.push(this);
                     if (Command.cache.length > 100) {
-                        Logger.log("Command | execute __WARNING! Too many commands in the cache!");
+                        // Logger.log("Command | execute __WARNING! Too many commands in the cache!");
                     }
                 }
 
