@@ -3,8 +3,7 @@
 export class ArrayTools {
     protected static REMOVE_COUNT_ALL: number = -1;
 
-
-    public static removeItem(list: any[], item: any, removeCount: number = ArrayTools.REMOVE_COUNT_ALL): void {
+    public static removeItem<T>(list: T[], item: T, removeCount: number = ArrayTools.REMOVE_COUNT_ALL): void {
         if (removeCount == ArrayTools.REMOVE_COUNT_ALL) {
             removeCount = Number.MAX_VALUE;
         }
@@ -19,7 +18,7 @@ export class ArrayTools {
         }
     }
 
-    public static removeItems(list: any[], removeItems: any[]): void {
+    public static removeItems<T>(list: T[], removeItems: T[]): void {
         let item: any;
         for (let itemIndex: number = 0; itemIndex < removeItems.length; itemIndex++) {
             item = removeItems[itemIndex];
@@ -52,7 +51,7 @@ export class ArrayTools {
         return isEqual
     }
 
-    public static changeItemIndex(item: any, list: any[], newIndex: number): void {
+    public static changeItemIndex<T>(item: T, list: T[], newIndex: number): void {
         if (newIndex >= list.length) {
             return;
         }
@@ -72,7 +71,7 @@ export class ArrayTools {
         array.sort(ArrayTools.randomizeSortFunction);
     }
 
-    public static randomizeSortFunction(obj1: Boolean, obj2: Object): number {
+    public static randomizeSortFunction(obj1: any, obj2: any): number {
         let randNum: number = -1 + Math.floor((Math.random() * 3));
         return randNum;
     }
@@ -95,8 +94,8 @@ export class ArrayTools {
         sourceArray[index2] = obj1;
     }
 
-    public static getRandomObj(array: any[], except: any[] = null): any {
-        let randObj: Object = null;
+    public static getRandomObj<T>(array: T[], except: T[] = null): T {
+        let randObj: T = null;
 
         // Если есть список объектов, которые нужно исключить из выборки,
         // то создаём копию списка и убираем их
@@ -113,8 +112,8 @@ export class ArrayTools {
         return randObj;
     }
 
-    public static getUniqueItems(list: any[]): any[] {
-        let result: any[] = list.filter(ArrayTools.removeDuplicatesFilter);
+    public static getUniqueItems<T>(list: T[]): T[] {
+        let result: T[] = list.filter(ArrayTools.removeDuplicatesFilter);
         return result;
     }
 
