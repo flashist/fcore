@@ -1,13 +1,15 @@
 ﻿import {Dictionary} from "../datastructure/Dictionary";
+import {IConstructor} from "../other/IConstructor";
+import {IFunctionArguments} from "../other/IFunctionArguments";
 
 export class ObjectsPool {
     protected objectsToClassMap: Dictionary<any, any>;
 
     public constructor() {
-        this.objectsToClassMap = new Dictionary<any, any>();
+        this.objectsToClassMap = new Dictionary<IConstructor, any[]>();
     }
 
-    public addObject(object: any, ObjectClass: any): void {
+    public addObject<T>(object: T, ObjectClass: IConstructor<T>): void {
         if (!object) {
             return;
         }
@@ -20,7 +22,7 @@ export class ObjectsPool {
         }
     }
 
-    public getObject(ObjectClass: any): any {
+    public getObject<T>(ObjectClass: IConstructor<T>, ...args): T {
         let result: any;
 
         let tempArr: any[] = this.getObjectsByClass(ObjectClass);
@@ -28,13 +30,13 @@ export class ObjectsPool {
             result = tempArr.shift();
 
         } else {
-            result = new ObjectClass();
+            result = new ObjectClass(...args);
         }
 
         return result;
     }
 
-    protected getObjectsByClass(ObjectClass: any): any[] {
+    protected getObjectsByClass<T>(ObjectClass: T): T[] {
         let result: any[] = (this.objectsToClassMap.getItem(ObjectClass) as any[]);
         if (!result) {
             result = [];
