@@ -40,7 +40,7 @@ export class EventListenerHelper<EventType extends any = any> {
         if (this.listenerThis) {
             tempListenerData.listener = listener.bind(this.listenerThis);
         } else {
-            tempListenerData.listener = this.listenerThis;
+            tempListenerData.listener = listener;
         }
         tempListenerData.sourceListener = listener;
         tempListeners.push(tempListenerData);
