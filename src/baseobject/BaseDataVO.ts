@@ -1,8 +1,8 @@
 ﻿import {Logger} from "../logger/Logger";
 import {ObjectTools} from "../tools/ObjectTools";
-import {BaseObject} from "./BaseObject";
+import {BaseEventDispatcher} from "../event/eventdispatcher/BaseEventDispatcher";
 
-export class BaseDataVO extends BaseObject {
+export class BaseDataVO extends BaseEventDispatcher {
 
     public type:string = "";
     public id:string = "";
