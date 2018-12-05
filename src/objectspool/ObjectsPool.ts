@@ -30,10 +30,14 @@ export class ObjectsPool {
             result = tempArr.shift();
 
         } else {
-            result = new ObjectClass(...args);
+            result = this.createNewObject(ObjectClass, ...args);
         }
 
         return result;
+    }
+
+    protected createNewObject<T>(ObjectClass: IConstructor<T>, ...args): T {
+        return new ObjectClass(...args);
     }
 
     protected getObjectsByClass<T>(ObjectClass: T): T[] {

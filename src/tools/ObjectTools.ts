@@ -78,7 +78,11 @@
         }
     }
 
-    public static getConstructorName(object: any): string {
-        return (object && object.constructor && object.constructor.name) ? object.constructor.name : "";
+    public static getObjectConstructorName(object: any): string {
+        return object.constructor ? ObjectTools.getConstructorName(object.constructor) : "";
+    }
+
+    public static getConstructorName(constructor: any): string {
+        return constructor.name ? constructor.name : "";
     }
 }
