@@ -1,5 +1,6 @@
 import {IDelayedFunctionVO} from "./IDelayedFunctionVO";
 import {ArrayTools} from "../ArrayTools";
+import {IFunctionArguments} from "../../index";
 
 export class FunctionTools {
 
@@ -60,10 +61,10 @@ export class FunctionTools {
         }
     }
 
-    public static addDelayedFunction(
-        func: Function,
+    public static addDelayedFunction<T extends Function>(
+        func: T,
         thisContext: any,
-        applyArgs: any[] = null,
+        applyArgs: IFunctionArguments<T> = null,
         delayTime: Number = 0,
         checkSameFunction: boolean = false): void {
 
@@ -78,13 +79,13 @@ export class FunctionTools {
         }
 
 
-        let info: IDelayedFunctionVO = {
+        let info: IDelayedFunctionVO<T> = {
             func: func,
             thisContext: thisContext,
             applyArgs: applyArgs,
             delayTime: delayTime,
             delayStartTime: 0
-        } as IDelayedFunctionVO;
+        } as IDelayedFunctionVO<T>;
 
         //FunctionTools.delayedFunctionsDict[func] = info;
         FunctionTools.delayedFunctionInfos.push(info);
@@ -93,7 +94,12 @@ export class FunctionTools {
         FunctionTools.isDelayedFunctionsChange = true;
     }
 
-    public static addDelayedUniqueFunction(func: Function, thisContext: any, applyParams: any[] = null, delayTime: Number = 0): void {
+    public static addDelayedUniqueFunction<T extends Function>(
+        func: T,
+        thisContext: any,
+        applyParams: IFunctionArguments<T> = null,
+        delayTime: Number = 0): void {
+
         FunctionTools.addDelayedFunction(func, thisContext, applyParams, delayTime, true);
     }
 

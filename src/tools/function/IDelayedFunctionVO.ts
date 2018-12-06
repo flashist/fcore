@@ -1,8 +1,10 @@
-export interface IDelayedFunctionVO {
+import {IFunctionArguments} from "../../index";
 
-    func: Function;
+export interface IDelayedFunctionVO<T extends Function = Function> {
+
+    func: T;
     thisContext: any;
-    applyArgs: any[];
+    applyArgs: IFunctionArguments<T>;
 
     delayStartTime: number;
     delayTime: number;
