@@ -53,7 +53,7 @@ export class FunctionTools {
             // Если у объекта нет времени задержки, или если уже прошло
             // достаточно времени для выполнения функции, то выполняем функцию
             if (!info.delayTime || info.delayTime <= Date.now() - info.delayStartTime) {
-                info.func.apply(null, info.applyArgs);
+                info.func.apply(info.thisContext, info.applyArgs);
                 ArrayTools.removeItem(FunctionTools.delayedFunctionInfos, info);
                 ArrayTools.removeItem(FunctionTools.delayedFunctions, info.func, 1);
             }
@@ -62,6 +62,7 @@ export class FunctionTools {
 
     public static addDelayedFunction(
         func: Function,
+        thisContext: any,
         applyArgs: any[] = null,
         delayTime: Number = 0,
         checkSameFunction: boolean = false): void {
@@ -79,6 +80,7 @@ export class FunctionTools {
 
         let info: IDelayedFunctionVO = {
             func: func,
+            thisContext: thisContext,
             applyArgs: applyArgs,
             delayTime: delayTime,
             delayStartTime: 0
@@ -91,11 +93,11 @@ export class FunctionTools {
         FunctionTools.isDelayedFunctionsChange = true;
     }
 
-    public static addDelayedUniqueFunction(func: Function, applyParams: any[] = null, delayTime: Number = 0): void {
-        FunctionTools.addDelayedFunction(func, applyParams, delayTime, true);
+    public static addDelayedUniqueFunction(func: Function, thisContext: any, applyParams: any[] = null, delayTime: Number = 0): void {
+        FunctionTools.addDelayedFunction(func, thisContext, applyParams, delayTime, true);
     }
 
-    private static checkIsSameFunctionWithSameParamsExist(func: Function, applyParams: any[] = null): boolean {
+    private static checkIsSameFunctionWithSameParamsExist(func: Function, thisContext: any, applyParams: any[] = null): boolean {
         let result: boolean = false;
 
         // Если в списке уже есть похожие функции
@@ -107,10 +109,13 @@ export class FunctionTools {
                 if (tempInfo) {
                     // Если одинаковые функции
                     if (tempInfo.func == func) {
-                        // Если параметры передаваемые в функцию тоже одинаковые
-                        if (ArrayTools.checkIfEqual(applyParams, tempInfo.applyArgs)) {
-                            result = true;
-                            break;
+                        // If this context is the same
+                        if (tempInfo.thisContext === thisContext) {
+                            // Если параметры передаваемые в функцию тоже одинаковые
+                            if (ArrayTools.checkIfEqual(applyParams, tempInfo.applyArgs)) {
+                                result = true;
+                                break;
+                            }
                         }
                     }
                 }
