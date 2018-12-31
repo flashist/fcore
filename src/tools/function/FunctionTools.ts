@@ -73,7 +73,7 @@ export class FunctionTools {
         if (checkSameFunction) {
             //if (FunctionTools.delayedFunctions.indexOf(func) != -1)\
             // Если уже есть похожая функция, то прерываемся
-            if (FunctionTools.checkIsSameFunctionWithSameParamsExist(func, applyArgs)) {
+            if (FunctionTools.checkIsSameFunctionWithSameParamsExist(func, thisContext, applyArgs)) {
                 return;
             }
         }
