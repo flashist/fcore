@@ -84,7 +84,6 @@ export class Command<ResolveType = any> extends BaseObject {
             }
         }
 
-
         //
         this.destruction();
     }
