@@ -8,6 +8,7 @@ import {BaseObject} from "../baseobject/BaseObject";
 export class Command<ResolveType = any> extends BaseObject {
 
     protected static cache: Command[] = [];
+    protected static CACHE_COMMANDS_COUNT_FOR_WARNING: number = 200;
 
     protected _isExecuting: boolean;
     public get isExecuting(): boolean {
@@ -48,8 +49,8 @@ export class Command<ResolveType = any> extends BaseObject {
 
                 if (Command.cache.indexOf(this) == -1) {
                     Command.cache.push(this);
-                    if (Command.cache.length > 100) {
-                        // Logger.log("Command | execute __WARNING! Too many commands in the cache!");
+                    if (Command.cache.length > Command.CACHE_COMMANDS_COUNT_FOR_WARNING) {
+                        console.log("Command | execute __WARNING! Too many commands in the cache!");
                     }
                 }
 
