@@ -94,7 +94,7 @@ export class ArrayTools {
         sourceArray[index2] = obj1;
     }
 
-    public static getRandomObj<T>(array: T[], except: T[] = null): T {
+    public static getRandomItem<T>(array: T[], except: T[] = null): T {
         let randObj: T = null;
 
         // Если есть список объектов, которые нужно исключить из выборки,

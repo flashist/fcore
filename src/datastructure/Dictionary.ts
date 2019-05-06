@@ -1,4 +1,5 @@
 ﻿import {UniqueTools} from "../tools/UniqueTools";
+import {ArrayTools} from "..";
 export class Dictionary<KeyType, ItemType> {
 
     protected map: any;
@@ -16,9 +17,15 @@ export class Dictionary<KeyType, ItemType> {
 
     public addItem(key: KeyType, item: ItemType): void {
         var tempId: string = UniqueTools.getObjectUniqueId(key);
+        if (this.map[tempId] === item) {
+            return;
+        }
+
         this.map[tempId] = item;
 
-        this.keys.push(key);
+        if (this.keys.indexOf(key) === -1) {
+            this.keys.push(key);
+        }
     }
 
     public removeItemByKey(key: KeyType): boolean {
@@ -26,6 +33,7 @@ export class Dictionary<KeyType, ItemType> {
         const result: boolean = !!this.map[tempId];
         if (result) {
             delete this.map[tempId];
+            ArrayTools.removeItem(this.keys, key);
         }
 
         return result;
@@ -33,5 +41,9 @@ export class Dictionary<KeyType, ItemType> {
 
     public getKeys(): KeyType[] {
         return this.keys.concat();
+    }
+
+    public get length(): number {
+        return this.keys.length;
     }
 }
