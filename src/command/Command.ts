@@ -33,7 +33,7 @@ export class Command<ResolveType = any> extends BaseObject {
     }
 
     public execute(): Promise<ResolveType> {
-        // console.log("Action | execute __ name: " + this.constructor['name']);
+        console.log("Action | execute __ name: " + this.constructor['name']);
 
         return new Promise<ResolveType>(
             (resolve: (result: ResolveType) => void, reject: () => void) => {
@@ -44,7 +44,6 @@ export class Command<ResolveType = any> extends BaseObject {
                     // Logger.log("Command | execute", "WARNING! Second execute while executing or complete! this.isExecuting: " + this.isExecuting + " | this.isCompleted: " + this.isCompleted);
                     return;
                 }
-
                 this._isExecuting = true;
 
                 if (Command.cache.indexOf(this) == -1) {
