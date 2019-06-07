@@ -22,14 +22,14 @@ export class EventsHelperTools {
         }
     }
 
-    static removeAllEventListeners(dispatcher: IDefaultEventDispatcher, type?: string): void {
+    /*static removeAllEventListeners(dispatcher: IDefaultEventDispatcher, type?: string): void {
         const emitter = (dispatcher as IEventDispatcher);
         if (emitter.removeAllEventListeners) {
             emitter.removeAllEventListeners(type);
         } else {
             (dispatcher as IEventEmitter).removeAllListeners(type);
         }
-    }
+    }*/
 
     static dispatch(dispatcher: IDefaultEventDispatcher, event: any, ...args): void {
         const emitter = (dispatcher as IEventDispatcher);
