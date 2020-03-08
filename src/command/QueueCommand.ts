@@ -34,8 +34,6 @@ export class QueueCommand extends Command {
 
 
     protected executeInternal():void {
-        super.executeInternal();
-
         this.executeNextCommand();
     }
 

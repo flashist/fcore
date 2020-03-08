@@ -5,7 +5,7 @@ import {Logger} from "../logger/Logger";
 import {ArrayTools} from "../tools/ArrayTools";
 import {BaseObject} from "../baseobject/BaseObject";
 
-export class Command<ResolveType = any> extends BaseObject {
+export abstract class Command<ResolveType = any> extends BaseObject {
 
     protected static cache: Command[] = [];
     protected static CACHE_COMMANDS_COUNT_FOR_WARNING: number = 200;
@@ -59,10 +59,10 @@ export class Command<ResolveType = any> extends BaseObject {
     }
 
 
-    protected executeInternal(): void {
-        // Note: subclasses should implement their own logic
-    }
-
+    /**
+     *  Note: subclasses should implement their own logic.
+     */
+    protected abstract executeInternal(): void;
 
     protected notifyComplete(resolveData?: ResolveType, rejectErrorData?: any): void {
         this._isExecuting = false;
