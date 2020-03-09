@@ -1,4 +1,5 @@
 export * from './baseobject/BaseDataVO'
+export * from './baseobject/IDatable'
 export * from './baseobject/BaseObject'
 export * from './command/Command'
 export * from './command/CommandErrorCode'

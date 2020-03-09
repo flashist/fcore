@@ -1,7 +1,8 @@
 ﻿import {BaseEventDispatcher} from "../event/eventdispatcher/BaseEventDispatcher";
 import {EventListenerHelper} from "../event/eventlistenerhelper/EventListenerHelper";
+import {IDatable} from "./IDatable";
 
-export class BaseObject<DataType extends object = object> extends BaseEventDispatcher {
+export class BaseObject<DataType extends object = object> extends BaseEventDispatcher implements IDatable {
 
     protected isConstructed: boolean;
 
