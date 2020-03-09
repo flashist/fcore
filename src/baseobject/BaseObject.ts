@@ -1,13 +1,4 @@
-﻿/*import {IConstructor} from "../other/IConstructor";
-
-import {BaseObjectExtendTools} from "./BaseObjectExtendTools";
-
-export const BaseObjectClass: IConstructor = (BaseObjectExtendTools as any).extend(BaseEventDispatcher);
-export class BaseObject extends BaseObjectClass {
-
-}*/
-
-import {BaseEventDispatcher} from "../event/eventdispatcher/BaseEventDispatcher";
+﻿import {BaseEventDispatcher} from "../event/eventdispatcher/BaseEventDispatcher";
 import {EventListenerHelper} from "../event/eventlistenerhelper/EventListenerHelper";
 
 export class BaseObject<DataType extends object = object> extends BaseEventDispatcher {
