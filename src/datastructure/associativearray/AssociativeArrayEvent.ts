@@ -1,3 +1,3 @@
 ﻿export class AssociativeArrayEvent {
-    public static CHANGE:string = "CHANGE";
+    public static CHANGE: string = "AssociativeArrayEvent.CHANGE";
 }
