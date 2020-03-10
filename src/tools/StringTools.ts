@@ -35,4 +35,36 @@ export class StringTools {
 
         return replacedString;
     }
+
+
+
+    public static groupCharacters(
+        sourceText: string,
+        countInGroup: number = 3,
+        groupsSeparator: string = " ",
+        startFromEnd: Boolean = true): string {
+
+        let resultArr: string[] = [];
+
+        let sourceTextArr: string[] = sourceText.split("");
+        if (startFromEnd) {
+            sourceTextArr = sourceTextArr.reverse();
+        }
+
+        let charsCount: number = sourceTextArr.length;
+        for (let charIndex: number = 0; charIndex < charsCount; charIndex++) {
+            resultArr.push(sourceTextArr[charIndex]);
+
+            if (charIndex > 0 && charIndex < sourceText.length - 1 && ((charIndex + 1) % countInGroup == 0)) {
+                resultArr.push(groupsSeparator);
+            }
+        }
+
+        if (startFromEnd) {
+            resultArr = resultArr.reverse();
+        }
+
+        const result: string = resultArr.join("");
+        return result;
+    }
 }
