@@ -36,8 +36,6 @@ export class StringTools {
         return replacedString;
     }
 
-
-
     public static groupCharacters(
         sourceText: string,
         countInGroup: number = 3,
