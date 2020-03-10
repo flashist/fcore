@@ -11,11 +11,6 @@ export class BaseDataVO extends BaseEventDispatcher {
 
     protected sourceDataPropNamesMap:any = {};
 
-    public constructor() {
-        super();
-    }
-
-
     protected commitSourceData():void {
         var propName:string;
         var propValue:any;
