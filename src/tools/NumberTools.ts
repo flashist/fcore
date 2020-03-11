@@ -63,4 +63,15 @@
 
         return result;
     }
+
+    static getDeltaBetweenNums(minNum: number, maxNum: number, delta: number): number {
+        if (delta < 0) {
+            delta = 0;
+        } else if (delta > 1) {
+            delta = 1;
+        }
+
+        const result: number = minNum + delta * (maxNum - minNum);
+        return result;
+    }
 }
