@@ -70,8 +70,6 @@ export abstract class Command<ResolveType = any> extends BaseObject {
 
             this._isCompleted = true;
 
-            /*var tempEvent:BaseEvent = new BaseEvent(BaseEvent.COMPLETE);
-             this.dispatchEvent(tempEvent);*/
             this.dispatchEvent(CommandEvent.COMPLETE);
 
             if (this.success) {
