@@ -1,5 +1,11 @@
-﻿export class ObjectTools {
-    public static copyProps(to: any, from: any, ignoreExistedProperties: boolean = false): boolean {
+﻿import {IObjectToolsCopyConfig} from "./IObjectToolsCopyConfig";
+
+export class ObjectTools {
+    public static copyProps(
+        to: any,
+        from: any,
+        config?: IObjectToolsCopyConfig): boolean {
+
         var result: boolean = false;
 
         var propNames: string[] = Object.keys(from);
@@ -12,10 +18,15 @@
 
                 // Check additionally for existed properties,
                 // if the settings are set correspondingly
-                if (!ignoreExistedProperties ||
-                    (ignoreExistedProperties && to[propName] === undefined)) {
+                if (!config?.ignoreExistedProperties ||
+                    (config?.ignoreExistedProperties && to[propName] === undefined)) {
 
-                    ObjectTools.copySingleProp(to, from, propName);
+                    if (config?.overrideExistedProperties) {
+                        to[propName] = ObjectTools.clone(from[propName]);
+
+                    } else {
+                        ObjectTools.copySingleProp(to, from, propName);
+                    }
 
                     // Remember that change was made
                     result = true;
@@ -26,27 +37,45 @@
         return result;
     }
 
-    static copySingleProp(to: any, from: any, paramName: string): void {
-        if (Array.isArray(from[paramName])) {
-            let tempList = to[paramName];
-            if (!to[paramName]) {
+    static copySingleProp(to: any, from: any, propName: string, config?: IObjectToolsCopyConfig): void {
+        if (Array.isArray(from[propName])) {
+            let tempList = to[propName];
+            if (!to[propName]) {
                 tempList = [];
             }
-            ObjectTools.copyProps(tempList, from[paramName]);
+            ObjectTools.copyProps(tempList, from[propName], config);
 
-            if (!to[paramName]) {
-                to[paramName] = tempList;
+            if (!to[propName]) {
+                to[propName] = tempList;
             }
 
-        } else if (ObjectTools.isObject(from[paramName])) {
-            if (!to[paramName]) {
-                to[paramName] = {};
+        } else if (ObjectTools.isObject(from[propName])) {
+            if (!to[propName]) {
+                to[propName] = {};
             }
-            ObjectTools.copyProps(to[paramName], from[paramName]);
+            ObjectTools.copyProps(to[propName], from[propName], config);
 
         } else {
-            to[paramName] = from[paramName];
+            to[propName] = from[propName];
         }
+    }
+
+    static clone(from: any): any {
+        let result: any;
+
+        if (Array.isArray(from)) {
+            result = [];
+            ObjectTools.copyProps(result, from);
+
+        } else if (ObjectTools.isObject(from)) {
+            result = {};
+            ObjectTools.copyProps(result, from);
+
+        } else {
+            result = from;
+        }
+
+        return result;
     }
 
     public static isObject(obj: any): boolean {
