@@ -27,7 +27,6 @@ export abstract class Command<ResolveType = any> extends BaseObject {
     constructor() {
         super();
 
-        this.errorCode = CommandErrorCode.NO_ERROR;
         this.eventListenerHelper = new EventListenerHelper(this);
     }
 
@@ -96,8 +95,8 @@ export abstract class Command<ResolveType = any> extends BaseObject {
 
 
     public get success(): boolean {
-        var result: boolean = false;
-        if (this.errorCode == CommandErrorCode.NO_ERROR) {
+        var result: boolean = true;
+        if (this.errorCode) {
             result = true;
         }
 
