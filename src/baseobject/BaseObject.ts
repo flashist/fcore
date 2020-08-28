@@ -2,13 +2,13 @@
 import {EventListenerHelper} from "../event/eventlistenerhelper/EventListenerHelper";
 import {IDatable} from "./IDatable";
 
-export class BaseObject<DataType extends object = object> extends BaseEventDispatcher implements IDatable {
+export class BaseObject<DataType extends any = any> extends BaseEventDispatcher implements IDatable {
 
     protected isConstructed: boolean;
 
     private _data: DataType;
 
-    protected eventListenerHelper:EventListenerHelper<Event | string | any>;
+    protected eventListenerHelper: EventListenerHelper<Event | string | any>;
 
 
     constructor(...args) {
@@ -61,6 +61,7 @@ export class BaseObject<DataType extends object = object> extends BaseEventDispa
     public get data(): DataType {
         return this._data;
     }
+
     public set data(value: DataType) {
         if (this.data == value) {
             return;
