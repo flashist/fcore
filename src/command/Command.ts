@@ -95,7 +95,7 @@ export abstract class Command<ResolveType = any> extends BaseObject {
     public get success(): boolean {
         var result: boolean = true;
         if (this.errorCode) {
-            result = true;
+            result = false;
         }
 
         return result;
