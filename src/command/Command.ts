@@ -2,6 +2,7 @@
 import {CommandErrorCode} from "./CommandErrorCode";
 import {EventListenerHelper} from "../event/eventlistenerhelper/EventListenerHelper";
 import {ArrayTools} from "../tools/ArrayTools";
+import {ObjectTools} from "../tools/ObjectTools";
 import {BaseObject} from "../baseobject/BaseObject";
 
 export abstract class Command<ResolveType = any> extends BaseObject {
@@ -31,7 +32,7 @@ export abstract class Command<ResolveType = any> extends BaseObject {
     }
 
     public execute(): Promise<ResolveType> {
-        console.log("Action | execute __ name: " + this.constructor['name']);
+        console.log("Command | execute __ name: " + ObjectTools.getConstructorName(this.constructor));
 
         return new Promise<ResolveType>(
             (resolve: (result: ResolveType) => void, reject: () => void) => {
@@ -75,6 +76,7 @@ export abstract class Command<ResolveType = any> extends BaseObject {
             if (this.success) {
                 this.promiseResolve(resolveData);
             } else {
+                console.warn("Command | notifyComplete __ Completed with error! name: ",  + ObjectTools.getConstructorName(this.constructor), " | errorCode: ", this.errorCode);
                 this.promiseReject(rejectErrorData);
             }
         }
