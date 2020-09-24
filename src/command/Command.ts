@@ -85,11 +85,12 @@ export abstract class Command<ResolveType = any> extends BaseObject {
         this.destruction();
     }
 
-    public terminate(): void {
-        if (!this.errorCode) {
-            this.errorCode = CommandErrorCode.TERMINATE;
+    public terminate(terminateErrorCode?: string): void {
+        if (!terminateErrorCode) {
+            terminateErrorCode = CommandErrorCode.TERMINATE;
         }
 
+        this.errorCode = terminateErrorCode;
         this.notifyComplete(null, Error(this.errorCode));
     }
 
