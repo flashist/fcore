@@ -64,6 +64,8 @@ export abstract class Command<ResolveType = any> extends BaseObject {
     protected abstract executeInternal(): void;
 
     protected notifyComplete(resolveData?: ResolveType, rejectErrorData?: any): void {
+        console.log("Command | notifyComplete __ name: " + ObjectTools.getConstructorName(this.constructor) + " | this.success: ", this.success);
+
         this._isExecuting = false;
 
         if (!this.isCompleted) {
