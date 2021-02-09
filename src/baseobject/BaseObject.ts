@@ -10,7 +10,6 @@ export class BaseObject<DataType extends any = any> extends BaseEventDispatcher 
 
     protected eventListenerHelper: EventListenerHelper<Event | string | any>;
 
-
     constructor(...args) {
         super(...args);
 

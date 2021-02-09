@@ -25,8 +25,8 @@ export abstract class Command<ResolveType = any> extends BaseObject {
     private promiseResolve: (result?: ResolveType) => void;
     private promiseReject: (errorCode?: string) => void;
 
-    constructor() {
-        super();
+    constructor(...args) {
+        super(...args);
 
         this.eventListenerHelper = new EventListenerHelper(this);
     }
