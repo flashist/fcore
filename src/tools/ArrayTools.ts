@@ -51,6 +51,14 @@ export class ArrayTools {
         return isEqual
     }
 
+    public static checkIfSomeEqual(source: any[], search: any[]): boolean {
+        return search.some(
+            (item: any) => {
+                return source.indexOf(item) >= 0;
+            }
+        );
+    }
+
     public static changeItemIndex<T>(item: T, list: T[], newIndex: number): void {
         if (newIndex >= list.length) {
             return;
