@@ -5,9 +5,9 @@ import {ArrayTools} from "../tools/ArrayTools";
 import {ObjectTools} from "../tools/ObjectTools";
 import {BaseObject} from "../baseobject/BaseObject";
 
-export abstract class Command<ResolveType = any> extends BaseObject {
+export abstract class Command<ResolveType = never> extends BaseObject {
 
-    protected static cache: Command[] = [];
+    protected static cache: Command<any>[] = [];
     protected static CACHE_COMMANDS_COUNT_FOR_WARNING: number = 200;
 
     protected _isExecuting: boolean;
