@@ -52,9 +52,18 @@ export abstract class Command<ResolveType = any> extends BaseObject {
                     }
                 }
 
-                this.executeInternal();
+                if (this.guard()) {
+                    this.executeInternal();
+                } else {
+                    this.notifyComplete();
+                }
             }
         );
+    }
+
+    public guard(): boolean {
+        // Override in subclasses to implement guard behavior
+        return true;
     }
 
 
