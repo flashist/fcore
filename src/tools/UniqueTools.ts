@@ -34,4 +34,11 @@ export class UniqueTools {
 
         return UniqueTools.uniqueIdByPool[poolId].toString();
     }
+
+    public static setCounterForPool(counter: number, poolId?: string): void {
+        if (!poolId) {
+            poolId = UniqueTools.DEFAULT_POOL_ID;
+        }
+        UniqueTools.uniqueIdByPool[poolId] = counter;
+    }
 }
