@@ -1,6 +1,6 @@
-﻿import {AssociativeArrayEvent} from "./AssociativeArrayEvent";
-import {BaseEventDispatcher} from "../../event/eventdispatcher/BaseEventDispatcher";
-import {ObjectTools} from "../..";
+﻿import { AssociativeArrayEvent } from "./AssociativeArrayEvent";
+import { BaseEventDispatcher } from "../../event/eventdispatcher/BaseEventDispatcher";
+import { ObjectTools } from "../..";
 
 export class AssociativeArray<ValueType> extends BaseEventDispatcher {
     protected map: { [key: string]: ValueType };
@@ -129,8 +129,13 @@ export class AssociativeArray<ValueType> extends BaseEventDispatcher {
         return result;
     }
 
-    public getAllItems(): ValueType[] {
-        return this.list.concat();
+    public getAllItems(makeCopy: boolean = true): ValueType[] {
+        let result: ValueType[] = this.list;
+        if (makeCopy) {
+            result = this.list.concat();
+        }
+
+        return result;
     }
 
     public getAllKeys(): string[] {
