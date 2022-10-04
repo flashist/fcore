@@ -1,9 +1,9 @@
-﻿import {CommandEvent} from "./CommandEvent";
-import {CommandErrorCode} from "./CommandErrorCode";
-import {EventListenerHelper} from "../event/eventlistenerhelper/EventListenerHelper";
-import {ArrayTools} from "../tools/ArrayTools";
-import {ObjectTools} from "../tools/ObjectTools";
-import {BaseObject} from "../baseobject/BaseObject";
+﻿import { CommandEvent } from "./CommandEvent";
+import { CommandErrorCode } from "./CommandErrorCode";
+import { EventListenerHelper } from "../event/eventlistenerhelper/EventListenerHelper";
+import { ArrayTools } from "../tools/ArrayTools";
+import { ObjectTools } from "../tools/ObjectTools";
+import { BaseObject } from "../baseobject/BaseObject";
 
 export abstract class Command<ResolveType = any> extends BaseObject {
 
@@ -82,12 +82,14 @@ export abstract class Command<ResolveType = any> extends BaseObject {
 
             this._isCompleted = true;
 
+            this.removeListeners();
+
             this.dispatchEvent(CommandEvent.COMPLETE);
 
             if (this.success) {
                 this.promiseResolve(resolveData);
             } else {
-                console.warn("Command | notifyComplete __ Completed with error! name: ",  + ObjectTools.getConstructorName(this.constructor), " | errorCode: ", this.errorCode);
+                console.warn("Command | notifyComplete __ Completed with error! name: ", + ObjectTools.getConstructorName(this.constructor), " | errorCode: ", this.errorCode);
                 this.promiseReject(rejectErrorData);
             }
         }
