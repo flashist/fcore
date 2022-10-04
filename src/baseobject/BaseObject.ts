@@ -1,6 +1,6 @@
-﻿import {BaseEventDispatcher} from "../event/eventdispatcher/BaseEventDispatcher";
-import {EventListenerHelper} from "../event/eventlistenerhelper/EventListenerHelper";
-import {IDatable} from "./IDatable";
+﻿import { BaseEventDispatcher } from "../event/eventdispatcher/BaseEventDispatcher";
+import { EventListenerHelper } from "../event/eventlistenerhelper/EventListenerHelper";
+import { IDatable } from "./IDatable";
 
 export class BaseObject<DataType extends any = any> extends BaseEventDispatcher implements IDatable {
 
