@@ -1,23 +1,23 @@
-﻿import {Command} from "./Command";
-import {CommandEvent} from "./CommandEvent";
-import {QueueCommandEvent} from "./QueueCommandEvent";
-import {QueueCommandErrorCode} from "./QueueCommandErrorCode";
+﻿import { Command } from "./Command";
+import { CommandEvent } from "./CommandEvent";
+import { QueueCommandEvent } from "./QueueCommandEvent";
+import { QueueCommandErrorCode } from "./QueueCommandErrorCode";
 
 export class QueueCommand extends Command {
-    protected queueCommands:Command[];
-    protected curCommandIndex:number;
+    protected queueCommands: Command[];
+    protected curCommandIndex: number;
 
-    protected runningCommand:Command;
+    protected runningCommand: Command;
 
-    protected lastCompleteCommand:Command;
+    protected lastCompleteCommand: Command;
 
-    public isNeedCompleteAfterTheLastCommand:boolean;
-    public isNeedChangeProgressByCommandComplete:boolean;
-    public isNeedAbortOnQueueCommandError:boolean;
+    public isNeedCompleteAfterTheLastCommand: boolean;
+    public isNeedChangeProgressByCommandComplete: boolean;
+    public isNeedAbortOnQueueCommandError: boolean;
 
-    private _progress:number;
+    private _progress: number;
 
-    constructor(commands:Command[] = null) {
+    constructor(commands: Command[] = null) {
         super();
 
         if (!commands) {
@@ -33,11 +33,11 @@ export class QueueCommand extends Command {
     }
 
 
-    protected executeInternal():void {
+    protected executeInternal(): void {
         this.executeNextCommand();
     }
 
-    protected executeNextCommand():void {
+    protected executeNextCommand(): void {
         if (this.isCompleted) {
             return;
         }
@@ -46,7 +46,7 @@ export class QueueCommand extends Command {
             if (this.curCommandIndex < this.queueCommands.length - 1) {
                 this.curCommandIndex++;
 
-                var tempCommand:Command = this.queueCommands[this.curCommandIndex];
+                var tempCommand: Command = this.queueCommands[this.curCommandIndex];
                 this.runningCommand = tempCommand;
                 //
                 this.addSingleCommandListeners(this.runningCommand);
@@ -62,7 +62,7 @@ export class QueueCommand extends Command {
     }
 
 
-    protected addSingleCommandListeners(cmd:Command):void {
+    protected addSingleCommandListeners(cmd: Command): void {
         this.eventListenerHelper.addEventListener(
             cmd,
             CommandEvent.COMPLETE,
@@ -70,12 +70,12 @@ export class QueueCommand extends Command {
         );
     }
 
-    protected removeSingleCommandListeners(cmd:Command):void {
+    protected removeSingleCommandListeners(cmd: Command): void {
         this.eventListenerHelper.removeEventListener(cmd, CommandEvent.COMPLETE, this.onCommandComplete);
     }
 
 
-    protected onCommandComplete(event:string):void {
+    protected onCommandComplete(event: string): void {
         this.lastCompleteCommand = this.runningCommand;
 
         this.resetRunningCommandData();
@@ -105,7 +105,7 @@ export class QueueCommand extends Command {
         }
     }
 
-    protected dispatchProgressEvent():void {
+    protected dispatchProgressEvent(): void {
         /*var tempProgressEvent:ProgressEvent = new ProgressEvent(
             ProgressEvent.PROGRESS,
             this.progress,
@@ -126,11 +126,11 @@ export class QueueCommand extends Command {
     //    return result;
     //}
 
-    public get progress():number {
+    public get progress(): number {
         return this._progress;
     }
 
-    protected setProgress(value:number) {
+    protected setProgress(value: number) {
         if (value == this.progress) {
             return;
         }
@@ -140,7 +140,7 @@ export class QueueCommand extends Command {
         this.dispatchProgressEvent();
     }
 
-    protected resetRunningCommandData():void {
+    protected resetRunningCommandData(): void {
         if (this.runningCommand) {
             this.removeSingleCommandListeners(this.runningCommand);
             this.runningCommand = null;
@@ -148,7 +148,7 @@ export class QueueCommand extends Command {
     }
 
 
-    public terminate():void {
+    public terminate(): void {
         super.terminate();
 
         //
@@ -157,7 +157,7 @@ export class QueueCommand extends Command {
         }
     }
 
-    protected notifyComplete():void {
+    protected notifyComplete(): void {
         super.notifyComplete();
 
         this.resetRunningCommandData();
@@ -166,7 +166,7 @@ export class QueueCommand extends Command {
     }
 
 
-    public add(cmd:Command):void {
+    public add(cmd: Command): void {
         this.queueCommands.push(cmd);
     }
 }
