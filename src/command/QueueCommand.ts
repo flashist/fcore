@@ -74,7 +74,7 @@ export class QueueCommand extends Command {
         if (!this.eventListenerHelper) {
             return;
         }
-        
+
         this.eventListenerHelper.removeEventListener(cmd, CommandEvent.COMPLETE, this.onCommandComplete);
     }
 
@@ -153,12 +153,11 @@ export class QueueCommand extends Command {
 
 
     public terminate(): void {
-        super.terminate();
-
-        //
         if (this.runningCommand) {
             this.runningCommand.terminate();
         }
+
+        super.terminate();
     }
 
     protected notifyComplete(): void {
