@@ -71,6 +71,10 @@ export class QueueCommand extends Command {
     }
 
     protected removeSingleCommandListeners(cmd: Command): void {
+        if (!this.eventListenerHelper) {
+            return;
+        }
+        
         this.eventListenerHelper.removeEventListener(cmd, CommandEvent.COMPLETE, this.onCommandComplete);
     }
 
