@@ -7,6 +7,8 @@ import { BaseObject } from "../baseobject/BaseObject";
 
 export abstract class Command<ResolveType = any> extends BaseObject {
 
+    protected constructorName: string;
+
     protected static cache: Command[] = [];
     protected static CACHE_COMMANDS_COUNT_FOR_WARNING: number = 200;
 
@@ -30,7 +32,8 @@ export abstract class Command<ResolveType = any> extends BaseObject {
     }
 
     public execute(): Promise<ResolveType> {
-        console.log("Command | execute __ name: " + ObjectTools.getConstructorName(this.constructor));
+        this.constructorName = ObjectTools.getConstructorName(this.constructor);
+        console.log("Command | execute __ name: " + this.constructorName);
 
         const executePromise: Promise<ResolveType> = new Promise<ResolveType>(
             (resolve: (result: ResolveType) => void, reject: () => void) => {
@@ -60,7 +63,7 @@ export abstract class Command<ResolveType = any> extends BaseObject {
 
         executePromise.catch(
             (reason: any) => {
-                console.warn("Command | notifyComplete __ Completed with error! name: ", + ObjectTools.getConstructorName(this.constructor), " | reason: ", reason);
+                console.warn("Command | notifyComplete __ Completed with error! name: ", this.constructorName, " | reason: ", reason);
             }
         );
 
@@ -79,7 +82,7 @@ export abstract class Command<ResolveType = any> extends BaseObject {
     protected abstract executeInternal(): void;
 
     protected notifyComplete(resolveData?: ResolveType, rejectErrorData?: any): void {
-        console.log("Command | notifyComplete __ name: " + ObjectTools.getConstructorName(this.constructor) + " | this.success: ", this.success);
+        console.log("Command | notifyComplete __ name: ", this.constructorName, " | this.success: ", this.success);
 
         this._isExecuting = false;
 
@@ -95,7 +98,7 @@ export abstract class Command<ResolveType = any> extends BaseObject {
             if (this.success) {
                 this.promiseResolve(resolveData);
             } else {
-                console.warn("Command | notifyComplete __ Completed with error! name: ", + ObjectTools.getConstructorName(this.constructor), " | errorCode: ", this.errorCode);
+                console.warn("Command | notifyComplete __ Completed with error! name: ", this.constructorName, " | errorCode: ", this.errorCode);
                 this.promiseReject(rejectErrorData);
             }
         }
