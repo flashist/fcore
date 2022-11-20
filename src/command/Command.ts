@@ -98,7 +98,6 @@ export abstract class Command<ResolveType = any> extends BaseObject {
             if (this.success) {
                 this.promiseResolve(resolveData);
             } else {
-                console.warn("Command | notifyComplete __ Completed with error! name: ", this.constructorName, " | errorCode: ", this.errorCode);
                 this.promiseReject(rejectErrorData);
             }
         }
@@ -113,7 +112,7 @@ export abstract class Command<ResolveType = any> extends BaseObject {
         }
 
         this.errorCode = terminateErrorCode;
-        this.notifyComplete(null, Error(this.errorCode));
+        this.notifyComplete(null, this.errorCode);
     }
 
 
