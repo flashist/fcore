@@ -32,7 +32,7 @@ export abstract class Command<ResolveType = any> extends BaseObject {
     public execute(): Promise<ResolveType> {
         console.log("Command | execute __ name: " + ObjectTools.getConstructorName(this.constructor));
 
-        return new Promise<ResolveType>(
+        const executePromise: Promise<ResolveType> = new Promise<ResolveType>(
             (resolve: (result: ResolveType) => void, reject: () => void) => {
                 this.promiseResolve = resolve;
                 this.promiseReject = reject;
@@ -57,6 +57,14 @@ export abstract class Command<ResolveType = any> extends BaseObject {
                 }
             }
         );
+
+        executePromise.catch(
+            (reason: any) => {
+                console.warn("Command | notifyComplete __ Completed with error! name: ", + ObjectTools.getConstructorName(this.constructor), " | reason: ", reason);
+            }
+        );
+
+        return executePromise;
     }
 
     public guard(): boolean {
