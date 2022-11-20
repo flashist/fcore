@@ -3,13 +3,13 @@ import { CommandEvent } from "./CommandEvent";
 import { QueueCommandEvent } from "./QueueCommandEvent";
 import { QueueCommandErrorCode } from "./QueueCommandErrorCode";
 
-export class QueueCommand extends Command {
-    protected queueCommands: Command[];
+export class QueueCommand<CommandType extends Command = Command> extends Command {
+    protected queueCommands: CommandType[];
     protected curCommandIndex: number;
 
-    protected runningCommand: Command;
+    protected runningCommand: CommandType;
 
-    protected lastCompleteCommand: Command;
+    protected lastCompleteCommand: CommandType;
 
     public isNeedCompleteAfterTheLastCommand: boolean;
     public isNeedChangeProgressByCommandComplete: boolean;
@@ -17,7 +17,7 @@ export class QueueCommand extends Command {
 
     private _progress: number;
 
-    constructor(commands: Command[] = null) {
+    constructor(commands: CommandType[] = null) {
         super();
 
         if (!commands) {
@@ -46,7 +46,7 @@ export class QueueCommand extends Command {
             if (this.curCommandIndex < this.queueCommands.length - 1) {
                 this.curCommandIndex++;
 
-                var tempCommand: Command = this.queueCommands[this.curCommandIndex];
+                var tempCommand: CommandType = this.queueCommands[this.curCommandIndex];
                 this.runningCommand = tempCommand;
                 //
                 this.addSingleCommandListeners(this.runningCommand);
@@ -62,7 +62,7 @@ export class QueueCommand extends Command {
     }
 
 
-    protected addSingleCommandListeners(cmd: Command): void {
+    protected addSingleCommandListeners(cmd: CommandType): void {
         this.eventListenerHelper.addEventListener(
             cmd,
             CommandEvent.COMPLETE,
@@ -70,7 +70,7 @@ export class QueueCommand extends Command {
         );
     }
 
-    protected removeSingleCommandListeners(cmd: Command): void {
+    protected removeSingleCommandListeners(cmd: CommandType): void {
         if (!this.eventListenerHelper) {
             return;
         }
@@ -79,7 +79,7 @@ export class QueueCommand extends Command {
     }
 
 
-    protected onCommandComplete(event: string): void {
+    protected onCommandComplete(): void {
         this.lastCompleteCommand = this.runningCommand;
 
         this.resetRunningCommandData();
@@ -168,8 +168,11 @@ export class QueueCommand extends Command {
         this.curCommandIndex = 0;
     }
 
-
-    public add(cmd: Command): void {
+    public add(cmd: CommandType): void {
         this.queueCommands.push(cmd);
+    }
+
+    public getCurrentRunningCommand(): CommandType {
+        return this.runningCommand;
     }
 }
