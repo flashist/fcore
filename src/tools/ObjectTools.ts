@@ -1,4 +1,4 @@
-﻿import {IObjectToolsCopyConfig} from "./IObjectToolsCopyConfig";
+﻿import { IObjectToolsCopyConfig } from "./IObjectToolsCopyConfig";
 
 export class ObjectTools {
     public static copyProps(
@@ -18,9 +18,21 @@ export class ObjectTools {
 
                 // Check additionally for existed properties,
                 // if the settings are set correspondingly
+                let isCopyingAllowed: boolean = false;
                 if (!config?.ignoreExistedProperties ||
                     (config?.ignoreExistedProperties && to[propName] === undefined)) {
+                    isCopyingAllowed = true;
+                }
 
+                if (isCopyingAllowed) {
+                    if (config?.ignoreNonExistedProperties) {
+                        if (!to.hasProperty(propName)) {
+                            isCopyingAllowed = false;
+                        }
+                    }
+                }
+
+                if (isCopyingAllowed) {
                     if (config?.overrideExistedProperties) {
                         to[propName] = ObjectTools.clone(from[propName]);
 
