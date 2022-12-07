@@ -9,11 +9,3 @@ for (let taskNameIndex = 0; taskNameIndex < taskNamesCount; taskNameIndex++) {
     var tempTaskName = taskNames[taskNameIndex];
     gulp[tempTaskName] = tasks[tempTaskName];
 }
-
-// Default
-// gulp.task(
-//     "default",
-//     gulp.series(
-//         "build-lib-module"
-//     )
-// );
