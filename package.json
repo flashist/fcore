@@ -9,25 +9,12 @@
   },
   "main": "index.js",
   "typings": "index.d.ts",
-  "scripts": {
-    "build-test": "npm explore @flashist/fbuildscripts -- npm run build",
-    "build": "gulp",
-    "publish:patch": "npm version patch && npm run build && cd ./dist && npm publish",
-    "publish:minor": "npm version minor && npm run build && cd ./dist && npm publish",
-    "publish:major": "npm version major && npm run build && cd ./dist && npm publish"
-  },
+  "scripts": {},
   "dependencies": {
     "eventemitter3": "^4.0.4"
   },
   "devDependencies": {
-    "@flashist/fbuildscripts": "0.x",
-    "gulp": "^4.0.2",
-    "gulp-shell": "^0.8.0",
-    "require-dir": "^1.2.0",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.0.2"
-  },
-  "peerDependencies": {
+    "@flashist/fbuildscripts": "0.0.5",
     "typescript": "^4.0.2"
   }
 }

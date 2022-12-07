@@ -11,9 +11,9 @@ for (let taskNameIndex = 0; taskNameIndex < taskNamesCount; taskNameIndex++) {
 }
 
 // Default
-gulp.task(
-    "default",
-    gulp.series(
-        "build-lib-module"
-    )
-);
+// gulp.task(
+//     "default",
+//     gulp.series(
+//         "build-lib-module"
+//     )
+// );
