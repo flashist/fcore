@@ -24,6 +24,7 @@ export abstract class Command<ResolveType = any> extends BaseObject {
 
     public errorCode: string;
 
+    private executePrommise: Promise<ResolveType>;
     private promiseResolve: (result?: ResolveType) => void;
     private promiseReject: (errorCode?: string) => void;
 
@@ -35,7 +36,7 @@ export abstract class Command<ResolveType = any> extends BaseObject {
         this.constructorName = ObjectTools.getConstructorName(this.constructor);
         console.log("Command | execute __ name: " + this.constructorName);
 
-        const executePromise: Promise<ResolveType> = new Promise<ResolveType>(
+        this.executePrommise = new Promise<ResolveType>(
             (resolve: (result: ResolveType) => void, reject: () => void) => {
                 this.promiseResolve = resolve;
                 this.promiseReject = reject;
@@ -61,13 +62,13 @@ export abstract class Command<ResolveType = any> extends BaseObject {
             }
         );
 
-        executePromise.catch(
+        this.executePrommise.catch(
             (reason: any) => {
                 console.warn("Command | notifyComplete __ Completed with error! name: ", this.constructorName, " | reason: ", reason);
             }
         );
 
-        return executePromise;
+        return this.executePrommise;
     }
 
     public guard(): boolean {
@@ -106,13 +107,15 @@ export abstract class Command<ResolveType = any> extends BaseObject {
         this.destruction();
     }
 
-    public async terminate(terminateErrorCode?: string): Promise<void> {
+    public async terminate(terminateErrorCode?: string): Promise<ResolveType> {
         if (!terminateErrorCode) {
             terminateErrorCode = CommandErrorCode.TERMINATE;
         }
 
         this.errorCode = terminateErrorCode;
         this.notifyComplete(null, this.errorCode);
+
+        return this.executePrommise;
     }
 
 

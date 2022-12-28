@@ -152,12 +152,12 @@ export class QueueCommand<CommandType extends Command = Command> extends Command
     }
 
 
-    public async terminate(): Promise<void> {
+    public async terminate(terminateErrorCode?: string): Promise<void> {
         if (this.runningCommand) {
-            await this.runningCommand.terminate();
+            await this.runningCommand.terminate(terminateErrorCode);
         }
 
-        return super.terminate();
+        return super.terminate(terminateErrorCode);
     }
 
     protected notifyComplete(): void {
