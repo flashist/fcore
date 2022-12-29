@@ -72,6 +72,29 @@ export class ObjectTools {
         }
     }
 
+    static copySinglePropFromValue(to: any, propName: string, value: any, config?: IObjectToolsCopyConfig): void {
+        if (Array.isArray(to[propName])) {
+            let tempList = to[propName];
+            if (!to[propName]) {
+                tempList = [];
+            }
+            ObjectTools.copyProps(tempList, value, config);
+
+            if (!to[propName]) {
+                to[propName] = tempList;
+            }
+
+        } else if (ObjectTools.isObject(to[propName])) {
+            if (!to[propName]) {
+                to[propName] = {};
+            }
+            ObjectTools.copyProps(to[propName], value, config);
+
+        } else {
+            to[propName] = value;
+        }
+    }
+
     static clone(from: any): any {
         let result: any;
 
