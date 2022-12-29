@@ -49,7 +49,7 @@ export class ObjectTools {
         return result;
     }
 
-    static copySingleProp(to: any, from: any, propName: string, config?: IObjectToolsCopyConfig): void {
+    static copySingleProp(to: any, from: any, propName: string | number, config?: IObjectToolsCopyConfig): void {
         if (Array.isArray(from[propName])) {
             let tempList = to[propName];
             if (!to[propName]) {
@@ -72,7 +72,7 @@ export class ObjectTools {
         }
     }
 
-    static copySinglePropFromValue(to: any, propName: string, value: any, config?: IObjectToolsCopyConfig): void {
+    static copySinglePropFromValue(to: any, propName: string | number, value: any, config?: IObjectToolsCopyConfig): void {
         if (Array.isArray(to[propName])) {
             let tempList = to[propName];
             if (!to[propName]) {
