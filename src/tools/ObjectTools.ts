@@ -119,7 +119,7 @@ export class ObjectTools {
 
     public static isSimpleType(obj: any): boolean {
         var isSimple: boolean = false;
-        if (typeof (obj) == "string" || typeof (obj) == "number" || typeof (obj) == "boolean") {
+        if (!Array.isArray(obj) && !ObjectTools.isObject(obj)) {
             isSimple = true;
         }
 
