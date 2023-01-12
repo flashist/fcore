@@ -7,7 +7,7 @@ import { BaseObject } from "../baseobject/BaseObject";
 
 export abstract class Command<ResolveType = any> extends BaseObject {
 
-    protected constructorName: string;
+    public constructorName: string;
 
     protected static cache: Command[] = [];
     protected static CACHE_COMMANDS_COUNT_FOR_WARNING: number = 200;
