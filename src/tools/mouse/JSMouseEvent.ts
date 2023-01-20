@@ -1,5 +1,3 @@
-export class JSMouseEvent {
-
-    static MOUSE_WHEEL: "wheel";
-
+export enum JSMouseEvent {
+    MOUSE_WHEEL = "wheel"
 }
