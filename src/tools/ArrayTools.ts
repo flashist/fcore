@@ -1,4 +1,4 @@
-﻿import {NumberTools} from "./NumberTools";
+﻿import { NumberTools } from "./NumberTools";
 
 export class ArrayTools {
     protected static REMOVE_COUNT_ALL: number = -1;
@@ -26,7 +26,7 @@ export class ArrayTools {
         }
     }
 
-    public static checkIfEqual(list1: any[], list2: any[]): boolean {
+    public static checkIfEqual<ItemType>(list1: ItemType[], list2: ItemType[]): boolean {
         let isEqual: boolean = true;
 
         // If there are the only 1 correct array
