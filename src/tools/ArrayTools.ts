@@ -18,7 +18,7 @@ export class ArrayTools {
         }
     }
 
-    public static removeItems<T>(list: T[], removeItems: T[]): void {
+    public static removeItems<T>(list: T[], removeItems: readonly T[]): void {
         let item: any;
         for (let itemIndex: number = 0; itemIndex < removeItems.length; itemIndex++) {
             item = removeItems[itemIndex];
@@ -102,19 +102,19 @@ export class ArrayTools {
         sourceArray[index2] = obj1;
     }
 
-    public static getRandomItem<T>(array: T[], except: T[] = null): T {
+    public static getRandomItem<T>(array: readonly T[], except: readonly T[] = null): T {
         let randObj: T = null;
 
+        let arrayCopy = array.concat();
         // Если есть список объектов, которые нужно исключить из выборки,
         // то создаём копию списка и убираем их
         if (except) {
-            array = array.concat();
-            ArrayTools.removeItems(array, except);
+            ArrayTools.removeItems(arrayCopy, except);
         }
 
-        if (array.length > 0) {
-            let randIndex: number = Math.floor(Math.random() * array.length);
-            randObj = array[randIndex];
+        if (arrayCopy.length > 0) {
+            let randIndex: number = Math.floor(Math.random() * arrayCopy.length);
+            randObj = arrayCopy[randIndex];
         }
 
         return randObj;
