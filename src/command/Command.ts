@@ -23,6 +23,7 @@ export abstract class Command<ResolveType = any> extends BaseObject {
     }
 
     public errorCode: string;
+    public rejectErrorData: any;
 
     protected executePrommise: Promise<ResolveType>;
     private promiseResolve: (result?: ResolveType) => void;
@@ -92,15 +93,18 @@ export abstract class Command<ResolveType = any> extends BaseObject {
 
             this._isCompleted = true;
 
+            this.rejectErrorData = rejectErrorData;
+
             this.removeListeners();
 
             this.dispatchEvent(CommandEvent.COMPLETE);
 
-            if (this.success) {
-                this.promiseResolve(resolveData);
-            } else {
-                this.promiseReject(rejectErrorData);
-            }
+            // if (this.success) {
+            //     this.promiseResolve(resolveData);
+            // } else {
+            //     this.promiseReject(rejectErrorData);
+            // }
+            this.promiseResolve(resolveData);
         }
 
         //
