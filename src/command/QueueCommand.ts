@@ -153,11 +153,19 @@ export class QueueCommand<CommandType extends Command = Command> extends Command
 
 
     public async terminate(terminateErrorCode?: string): Promise<void> {
+        let waitPromisses: Promise<any>[] = [];
         if (this.runningCommand) {
-            await this.runningCommand.terminate(terminateErrorCode);
+            waitPromisses.push(this.runningCommand.terminate(terminateErrorCode));
         }
 
-        return super.terminate(terminateErrorCode);
+        Promise.all(waitPromisses)
+            .finally(
+                () => {
+                    super.terminate(terminateErrorCode);
+                }
+            );
+
+        return this.executePrommise;
     }
 
     protected notifyComplete(): void {

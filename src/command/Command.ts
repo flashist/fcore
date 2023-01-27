@@ -24,7 +24,7 @@ export abstract class Command<ResolveType = any> extends BaseObject {
 
     public errorCode: string;
 
-    private executePrommise: Promise<ResolveType>;
+    protected executePrommise: Promise<ResolveType>;
     private promiseResolve: (result?: ResolveType) => void;
     private promiseReject: (errorCode?: string) => void;
 
