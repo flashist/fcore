@@ -89,8 +89,8 @@ export class ArrayTools {
         let randIndex2: number;
         let sourceArrayLength: number = sourceArray.length;
         for (let itemIndex: number = 0; itemIndex < itemsCount; itemIndex++) {
-            randIndex1 = NumberTools.getRandom(0, sourceArrayLength, true);
-            randIndex2 = NumberTools.getRandom(0, sourceArrayLength, true);
+            randIndex1 = NumberTools.getRandomInt(0, sourceArrayLength - 1);
+            randIndex2 = NumberTools.getRandomInt(0, sourceArrayLength - 1);
             ArrayTools.swapItemsInArray(sourceArray, randIndex1, randIndex2);
         }
     }
