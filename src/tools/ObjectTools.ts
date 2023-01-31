@@ -51,14 +51,23 @@ export class ObjectTools {
 
     static copySingleProp(to: any, from: any, propName: string | number, config?: IObjectToolsCopyConfig): void {
         if (Array.isArray(from[propName])) {
-            let tempList = to[propName];
-            if (!to[propName]) {
-                tempList = [];
-            }
-            ObjectTools.copyProps(tempList, from[propName], config);
+            let tempFromList: any[] = from[propName];
 
-            if (!to[propName]) {
+            let tempList = to[propName];
+            if (!tempList) {
+                tempList = [];
                 to[propName] = tempList;
+            }
+
+            // ObjectTools.copyProps(tempList, from[propName], config);
+            let fromElementsCount: number = tempFromList.length;
+            for (let fromElementIndex: number = 0; fromElementIndex < fromElementsCount; fromElementIndex++) {
+                if (ObjectTools.isObject(tempList[fromElementIndex])) {
+                    ObjectTools.copyProps(tempList[fromElementIndex], tempFromList[fromElementIndex], config);
+
+                } else {
+                    tempList[fromElementIndex] = ObjectTools.clone(tempFromList[fromElementIndex]);
+                }
             }
 
         } else if (ObjectTools.isObject(from[propName])) {
