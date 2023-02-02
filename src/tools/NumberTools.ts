@@ -72,8 +72,8 @@
             result = Math.ceil(source * tempKoef) / tempKoef;
         }
 
-        if (roundTo < 1) {
-            let decimalsCount: number = (roundTo.toString().split('.')[1] || []).length;
+        let decimalsCount: number = (roundTo.toString().split('.')[1] || []).length;
+        if (decimalsCount > 0) {
             result = parseFloat(result.toFixed(decimalsCount));
         }
 
