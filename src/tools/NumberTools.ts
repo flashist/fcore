@@ -72,6 +72,11 @@
             result = Math.ceil(source * tempKoef) / tempKoef;
         }
 
+        if (roundTo < 1) {
+            let decimalsCount: number = (roundTo.toString().split('.')[1] || []).length;
+            result = parseFloat(result.toFixed(decimalsCount));
+        }
+
         return result;
     }
 
