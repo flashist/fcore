@@ -1,18 +1,32 @@
-import {BaseObject, Dictionary} from "..";
+import {BaseObject} from "@flashist/fcore";
+import {LockEvent} from "./LockEvent";
 
 export class Lock extends BaseObject {
 
-    protected locksDict: Dictionary<any, any> = new Dictionary();
+    protected lockers: any[] = [];
 
-    public lock(object: any): void {
-        this.locksDict.addItem(object, object);
+    public get enabled(): boolean {
+        return this.lockers.length > 0;
     }
 
-    public unlock(object: any): void {
-        this.locksDict.removeItemByKey(object);
+    public add(locker: any): void {
+        if (this.lockers.indexOf(locker) !== -1) {
+            return;
+        }
+
+        this.lockers.push(locker);
+
+        this.dispatchEvent(LockEvent.CHANGE);
     }
 
-    public get isLocked(): boolean {
-        return this.locksDict.length > 0;
+    public remove(locker: any): void {
+        const lockerIndex: number = this.lockers.indexOf(locker);
+        if (lockerIndex === -1) {
+            return;
+        }
+
+        this.lockers.splice(lockerIndex, 1);
+
+        this.dispatchEvent(LockEvent.CHANGE);
     }
 }
