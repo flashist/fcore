@@ -107,7 +107,7 @@ export abstract class Command<ResolveType = any> extends BaseObject {
         this.destruction();
     }
 
-    public async terminate(terminateErrorCode?: string): Promise<ResolveType> {
+    public terminate(terminateErrorCode?: string): Promise<ResolveType> {
         if (!terminateErrorCode) {
             terminateErrorCode = CommandErrorCode.TERMINATE;
         }

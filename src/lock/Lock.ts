@@ -1,5 +1,6 @@
-import {BaseObject} from "@flashist/fcore";
+
 import {LockEvent} from "./LockEvent";
+import {BaseObject} from "../baseobject/BaseObject";
 
 export class Lock extends BaseObject {
 
