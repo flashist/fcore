@@ -1,4 +1,5 @@
 ﻿import { NumberTools } from "./NumberTools";
+import {ObjectTools} from "./ObjectTools";
 
 export class ArrayTools {
     protected static REMOVE_COUNT_ALL: number = -1;
@@ -40,7 +41,7 @@ export class ArrayTools {
             } else {
                 let itemsCount: number = list1.length;
                 for (let itemIndex: number = 0; itemIndex < itemsCount; itemIndex++) {
-                    if (list1[itemIndex] != list2[itemIndex]) {
+                    if (!ObjectTools.checkIfEqual(list1[itemIndex], list2[itemIndex])) {
                         isEqual = false;
                         break;
                     }
