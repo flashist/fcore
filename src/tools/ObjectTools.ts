@@ -159,4 +159,28 @@ export class ObjectTools {
     public static getConstructorName(constructor: any): string {
         return constructor.name ? constructor.name : "";
     }
+
+    public static checkIfEqual(obj1: any, obj2: any): boolean {
+        let result: boolean = true;
+
+        for (let key in obj1) {
+            if (obj1.hasOwnProperty(key) && obj2.hasOwnProperty(key)) {
+                if (typeof obj1[key] === "object" && typeof obj2[key] === "object") {
+                    if (!ObjectTools.checkIfEqual(obj1[key], obj2[key])) {
+                        result = false;
+                        break;
+                    }
+                } else if (obj1[key] !== obj2[key]) {
+                    result = false;
+                    break;
+                }
+
+            } else {
+                result = false;
+                break;
+            }
+        }
+
+        return result;
+    }
 }
