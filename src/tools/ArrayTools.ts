@@ -60,6 +60,23 @@ export class ArrayTools {
         );
     }
 
+    public static getDifference<T>(list1: T[], list2: T[]): T[] {
+        let result: T[] = [];
+
+        let allItems: T[] = [
+            ...list1,
+            ...list2
+        ];
+        for (let singleItem of allItems) {
+            // If an item is unique for one of the lists, then add it to the result
+            if (list1.indexOf(singleItem) === -1 || list2.indexOf(singleItem) === -1) {
+                result.push(singleItem);
+            }
+        }
+
+        return result;
+    }
+
     public static changeItemIndex<T>(item: T, list: T[], newIndex: number): void {
         if (newIndex >= list.length) {
             return;
@@ -101,6 +118,43 @@ export class ArrayTools {
         let obj2: any = sourceArray[index2];
         sourceArray[index1] = obj2;
         sourceArray[index2] = obj1;
+    }
+
+    public static getRandomItemBasedOnWeights<T>(items: T[], weights?: number[]): T {
+        let result: T;
+
+        const defaultWeight: number = 1;
+        if (!weights) {
+            weights = Array(items.length).fill(defaultWeight);
+        }
+
+        const itemsCount: number = items.length;
+
+        if (weights.length < items.length) {
+            for (let itemIndex: number = weights.length; itemIndex < itemsCount; itemIndex++) {
+                weights[itemIndex] = defaultWeight;
+            }
+        }
+
+        let totalWeight: number = 0;
+        for (let itemIndex: number = 0; itemIndex < itemsCount; itemIndex++) {
+            totalWeight += weights[itemIndex];
+        }
+
+        const randWeight: number = Math.random() * totalWeight;
+
+        let totalCheckedWeight: number = 0;
+        for (let itemIndex: number = 0; itemIndex < itemsCount; itemIndex++) {
+            let singleWeight: number = weights[itemIndex];
+            totalCheckedWeight += singleWeight;
+
+            if (randWeight < totalCheckedWeight) {
+                result = items[itemIndex];
+                break;
+            }
+        }
+
+        return result;
     }
 
     public static getRandomItem<T>(array: readonly T[], except: readonly T[] = null): T {
