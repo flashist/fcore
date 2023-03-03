@@ -77,6 +77,18 @@ export class ArrayTools {
         return result;
     }
 
+    public static getSimilar<T>(list1: T[], list2: T[]): T[] {
+        let result: T[] = [];
+
+        for (let singleItem of list1) {
+            if (list2.indexOf(singleItem) !== -1) {
+                result.push(singleItem);
+            }
+        }
+
+        return result;
+    }
+
     public static changeItemIndex<T>(item: T, list: T[], newIndex: number): void {
         if (newIndex >= list.length) {
             return;
