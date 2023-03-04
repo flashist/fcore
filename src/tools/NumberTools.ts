@@ -90,4 +90,8 @@
         const result: number = minNum + delta * (maxNum - minNum);
         return result;
     }
+
+    static getMinMax(value: number, min: number, max: number): number {
+        return Math.min(Math.max(value, min), max);
+    }
 }
