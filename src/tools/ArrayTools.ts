@@ -4,7 +4,9 @@ import {ObjectTools} from "./ObjectTools";
 export class ArrayTools {
     protected static REMOVE_COUNT_ALL: number = -1;
 
-    public static removeItem<T>(list: T[], item: T, removeCount: number = ArrayTools.REMOVE_COUNT_ALL): void {
+    public static removeItem<T>(list: T[], item: T, removeCount: number = ArrayTools.REMOVE_COUNT_ALL): boolean {
+        let result: boolean = false;
+
         if (removeCount == ArrayTools.REMOVE_COUNT_ALL) {
             removeCount = Number.MAX_VALUE;
         }
@@ -17,6 +19,12 @@ export class ArrayTools {
             itemIndex = list.indexOf(item, itemIndex);
             totalRemovedCount++;
         }
+
+        if (totalRemovedCount > 0) {
+            result = true;
+        }
+
+        return result;
     }
 
     public static removeItems<T>(list: T[], removeItems: readonly T[]): void {
