@@ -105,7 +105,7 @@ export class ObjectTools {
         // }
     }
 
-    static clone(from: any): any {
+    static clone<T>(from: T): T {
         let result: any;
 
         if (Array.isArray(from)) {
