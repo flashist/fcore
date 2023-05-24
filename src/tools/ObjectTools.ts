@@ -164,22 +164,28 @@ export class ObjectTools {
         let result: boolean = true;
 
         if (obj1 !== obj2) {
-            for (let key in obj1) {
-                if (obj1.hasOwnProperty(key) && obj2.hasOwnProperty(key)) {
-                    if (typeof obj1[key] === "object" && typeof obj2[key] === "object") {
-                        if (!ObjectTools.checkIfEqual(obj1[key], obj2[key])) {
+            // if casting to boolean is different, then objects are not equal
+            if (!!obj1 !== !!obj2) {
+                result = false;
+
+            } else {
+                for (let key in obj1) {
+                    if (obj1.hasOwnProperty(key) && obj2.hasOwnProperty(key)) {
+                        if (typeof obj1[key] === "object" && typeof obj2[key] === "object") {
+                            if (!ObjectTools.checkIfEqual(obj1[key], obj2[key])) {
+                                result = false;
+                                break;
+                            }
+
+                        } else if (obj1[key] !== obj2[key]) {
                             result = false;
                             break;
                         }
 
-                    } else if (obj1[key] !== obj2[key]) {
+                    } else {
                         result = false;
                         break;
                     }
-
-                } else {
-                    result = false;
-                    break;
                 }
             }
         }
