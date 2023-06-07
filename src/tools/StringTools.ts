@@ -74,5 +74,8 @@ export class StringTools {
         return source.charAt(0).toLocaleUpperCase(locale) + source.substring(1);
     }
 
-
+    public static count(source: string, find: string): number {
+        const result: number = (source.match(`/${find}/g`) || []).length;
+        return result;
+    }
 }
