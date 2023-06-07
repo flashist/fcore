@@ -75,7 +75,12 @@ export class StringTools {
     }
 
     public static count(source: string, find: string): number {
-        const result: number = (source.match(`/${find}/g`) || []).length;
+        // const result: number = (source.match(`/${find}/g`) || []).length;
+        let result: number = source.split(find).length - 1;
+        if (result < 0) {
+            result = 0;
+        }
+
         return result;
     }
 }
