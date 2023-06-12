@@ -1,4 +1,12 @@
 export class AngleTools {
+    static radiansToDegrees(radians: number): number {
+        return radians * 180 / Math.PI;
+    }
+
+    static degreesToRadians(degrees: number): number {
+        return degrees * Math.PI / 180;
+    }
+
     static getSafeRadians(radians: number): number {
         let result: number = radians;
 
