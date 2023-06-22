@@ -169,22 +169,33 @@ export class ObjectTools {
                 result = false;
 
             } else {
-                for (let key in obj1) {
-                    if (obj1.hasOwnProperty(key) && obj2.hasOwnProperty(key)) {
-                        if (typeof obj1[key] === "object" && typeof obj2[key] === "object") {
-                            if (!ObjectTools.checkIfEqual(obj1[key], obj2[key])) {
+                let shouldCheckKeys: boolean = true;
+                if (Array.isArray(obj1) && Array.isArray(obj2)) {
+                    if ((obj1 as Array<any>).length !== (obj2 as Array<any>).length) {
+                        shouldCheckKeys = false;
+
+                        result = false;
+                    }
+                }
+
+                if (shouldCheckKeys) {
+                    for (let key in obj1) {
+                        if (obj1.hasOwnProperty(key) && obj2.hasOwnProperty(key)) {
+                            if (typeof obj1[key] === "object" && typeof obj2[key] === "object") {
+                                if (!ObjectTools.checkIfEqual(obj1[key], obj2[key])) {
+                                    result = false;
+                                    break;
+                                }
+
+                            } else if (obj1[key] !== obj2[key]) {
                                 result = false;
                                 break;
                             }
 
-                        } else if (obj1[key] !== obj2[key]) {
+                        } else {
                             result = false;
                             break;
                         }
-
-                    } else {
-                        result = false;
-                        break;
                     }
                 }
             }
