@@ -1,10 +1,10 @@
-import {IEventListenerCallback} from "../eventlistenerhelper/IEventListenerCallback";
-import {IDefaultEventDispatcher} from "../eventlistenerhelper/IDefaultEventDispatcher";
-import {IEventEmitter} from "../eventlistenerhelper/IEventEmitter";
-import {IEventDispatcher} from "../eventlistenerhelper/IEventDispatcher";
+import { IEventListener } from "../eventlistenerhelper/IEventListener";
+import { IDefaultEventDispatcher } from "../eventlistenerhelper/IDefaultEventDispatcher";
+import { IEventEmitter } from "../eventlistenerhelper/IEventEmitter";
+import { IEventDispatcher } from "../eventlistenerhelper/IEventDispatcher";
 export class EventsHelperTools {
 
-    static addEventListener(dispatcher: IDefaultEventDispatcher, type: string, listener: IEventListenerCallback): void {
+    static addEventListener(dispatcher: IDefaultEventDispatcher, type: string, listener: IEventListener): void {
         const emitter = (dispatcher as IEventDispatcher);
         if (emitter.addEventListener) {
             emitter.addEventListener(type, listener);
@@ -13,7 +13,7 @@ export class EventsHelperTools {
         }
     }
 
-    static removeEventListener(dispatcher: IDefaultEventDispatcher, type: string, listener: IEventListenerCallback): void {
+    static removeEventListener(dispatcher: IDefaultEventDispatcher, type: string, listener: IEventListener): void {
         const emitter = (dispatcher as IEventDispatcher);
         if (emitter.removeEventListener) {
             emitter.removeEventListener(type, listener);

@@ -1,7 +1,7 @@
-﻿import {IEventListenerCallback} from "./IEventListenerCallback";
+﻿import { IEventListener } from "./IEventListener";
 export interface IEventDispatcher<EventType = string> {
-    addEventListener(type: string, listener: IEventListenerCallback): void;
-    removeEventListener(type: string, listener: IEventListenerCallback): void;
+    addEventListener(type: string, listener: IEventListener): void;
+    removeEventListener(type: string, listener: IEventListener): void;
     // removeAllEventListeners(type?: string): void;
     dispatchEvent(event: EventType, ...args): void;
 }

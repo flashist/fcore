@@ -1,5 +1,5 @@
-﻿import {IEventDispatcher} from "../eventlistenerhelper/IEventDispatcher";
-import {IEventListenerCallback} from "../eventlistenerhelper/IEventListenerCallback";
+﻿import { IEventDispatcher } from "../eventlistenerhelper/IEventDispatcher";
+import { IEventListener } from "../eventlistenerhelper/IEventListener";
 
 import * as EventEmitter from "eventemitter3";
 
@@ -18,7 +18,7 @@ export class BaseEventDispatcher implements IEventDispatcher<string> {
         this.eventEmitter = (new (EventEmitter as any)() as IEventEmitter);
     }
 
-    addEventListener(type: string, listener: IEventListenerCallback): void {
+    addEventListener(type: string, listener: IEventListener): void {
         this.eventEmitter.addListener(type, listener as Function);
     }
 
@@ -26,7 +26,7 @@ export class BaseEventDispatcher implements IEventDispatcher<string> {
         this.eventEmitter.removeAllListeners(type);
     }
 
-    removeEventListener(type: string, listener: IEventListenerCallback): void {
+    removeEventListener(type: string, listener: IEventListener): void {
         this.eventEmitter.removeListener(type, listener as Function);
     }
 

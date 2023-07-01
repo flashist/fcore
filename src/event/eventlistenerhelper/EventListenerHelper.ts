@@ -1,11 +1,11 @@
 ﻿import {
     ArrayTools,
-    IEventListenerCallback,
+    IEventListener,
     IDefaultEventDispatcher,
     EventListenerHelperItemVO,
     AssociativeArray
 } from "../../index";
-import {EventsHelperTools} from "../tools/EventsHelperTools";
+import { EventsHelperTools } from "../tools/EventsHelperTools";
 
 export class EventListenerHelper<EventType extends any = any> {
     protected listenerThis: any;
@@ -28,9 +28,9 @@ export class EventListenerHelper<EventType extends any = any> {
     }
 
 
-    public addEventListener(dispatcher: IDefaultEventDispatcher<EventType>,
-                            type: string,
-                            listener: IEventListenerCallback): void {
+    public addEventListener<ListenerType extends IEventListener = IEventListener>(dispatcher: IDefaultEventDispatcher<EventType>,
+        type: string,
+        listener: ListenerType): void {
 
         var tempListeners: EventListenerHelperItemVO<EventType>[] = this.getEventListeners(type);
 
@@ -54,8 +54,8 @@ export class EventListenerHelper<EventType extends any = any> {
     }
 
     public removeEventListener(dispatcher: IDefaultEventDispatcher<EventType>,
-                               type: string,
-                               listener: IEventListenerCallback): void {
+        type: string,
+        listener: IEventListener): void {
 
         let removedListeners: any[] = [];
         let listenerVO: EventListenerHelperItemVO<EventType>;
