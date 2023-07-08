@@ -29,6 +29,13 @@
     }
 
     public static getRandomInt(min: number, max: number) {
+        // Make sure min and max are correct
+        if (min > max) {
+            const tempMax: number = max;
+            max = min;
+            min = tempMax;
+        }
+
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;

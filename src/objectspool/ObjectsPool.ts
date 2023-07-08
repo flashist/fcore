@@ -1,6 +1,5 @@
-﻿import {Dictionary} from "../datastructure/Dictionary";
-import {IConstructor} from "../other/IConstructor";
-import {IFunctionArguments} from "../other/IFunctionArguments";
+﻿import { Dictionary } from "../datastructure/Dictionary";
+import { IConstructor } from "../other/IConstructor";
 
 export class ObjectsPool {
     protected objectsToClassMap: Dictionary<any, any>;
