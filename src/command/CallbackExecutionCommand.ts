@@ -6,8 +6,8 @@ export class CallbackExecutionCommand<ResolveType = any> extends Command<Resolve
         super(callback);
     }
 
-    protected executeInternal(): void {
-        this.callback();
+    protected async executeInternal() {
+        await this.callback();
 
         this.notifyComplete();
     }
