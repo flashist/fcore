@@ -101,4 +101,13 @@
     static getMinMax(value: number, min: number, max: number): number {
         return Math.min(Math.max(value, min), max);
     }
+
+    static getSign(value: number): number {
+        let result: number = 1;
+        if (value < 0) {
+            result = -1;
+        }
+
+        return result;
+    }
 }
