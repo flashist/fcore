@@ -1,4 +1,3 @@
-export * from './TestCoreClass';
 export * from './baseobject';
 export * from './command';
 export * from './datastructure';
@@ -9,4 +8,5 @@ export * from './lock';
 export * from './logger';
 export * from './objectspool';
 export * from './other';
+export * from './TestCoreClass';
 export * from './tools';
