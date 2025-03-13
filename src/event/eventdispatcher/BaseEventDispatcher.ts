@@ -1,7 +1,7 @@
 ﻿import { IEventDispatcher } from "../eventlistenerhelper/IEventDispatcher";
 import { IEventListener } from "../eventlistenerhelper/IEventListener";
 
-import * as EventEmitter from "eventemitter3";
+import { EventEmitter } from "eventemitter3";
 
 // Type definition for the eventemitter3
 declare type IEventEmitter = {
@@ -15,7 +15,7 @@ export class BaseEventDispatcher implements IEventDispatcher<string> {
     private eventEmitter: IEventEmitter;
 
     public constructor(...args) {
-        this.eventEmitter = (new (EventEmitter as any)() as IEventEmitter);
+        this.eventEmitter = new EventEmitter();
     }
 
     addEventListener(type: string, listener: IEventListener): void {
