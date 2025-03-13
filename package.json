@@ -11,10 +11,10 @@
   "typings": "index.d.ts",
   "scripts": {},
   "dependencies": {
-    "eventemitter3": "^4.0.4"
+    "eventemitter3": "^5.0.1"
   },
   "devDependencies": {
     "@flashist/fbuildscripts": "0.x",
-    "typescript": "^4.9.4"
+    "typescript": "^5.8.2"
   }
 }
