@@ -25,7 +25,7 @@ export class ObjectTools {
                 }
 
                 if (isCopyingAllowed) {
-                    if (config?.ignoreNonExistedProperties) {
+                    if (config?.ignoreNotExistedProperties) {
                         if (!to.hasOwnProperty(propName)) {
                             isCopyingAllowed = false;
                         }
