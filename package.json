@@ -14,7 +14,7 @@
     "eventemitter3": "^5.0.1"
   },
   "devDependencies": {
-    "@flashist/fbuildscripts": "^0.0.50",
+    "@flashist/fbuildscripts": "0.x",
     "typescript": "^5.8.2"
   }
 }
