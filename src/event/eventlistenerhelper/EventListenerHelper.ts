@@ -1,11 +1,9 @@
-﻿import {
-    ArrayTools,
-    IEventListener,
-    IDefaultEventDispatcher,
-    EventListenerHelperItemVO,
-    AssociativeArray
-} from "../../index";
+﻿import { AssociativeArray } from "../../datastructure/associativearray/AssociativeArray";
+import { ArrayTools } from "../../tools/ArrayTools";
 import { EventsHelperTools } from "../tools/EventsHelperTools";
+import { EventListenerHelperItemVO } from "./EventListenerHelperItemVO";
+import { IDefaultEventDispatcher } from "./IDefaultEventDispatcher";
+import { IEventListener } from "./IEventListener";
 
 export class EventListenerHelper<EventType extends any = any> {
     protected listenerThis: any;

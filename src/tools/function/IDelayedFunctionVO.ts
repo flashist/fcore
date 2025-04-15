@@ -1,4 +1,4 @@
-import {IFunctionArguments} from "../../index";
+import { IFunctionArguments } from "../../other/IFunctionArguments";
 
 export interface IDelayedFunctionVO<T extends Function = Function> {
 

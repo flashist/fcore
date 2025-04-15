@@ -1,6 +1,6 @@
-import {IDelayedFunctionVO} from "./IDelayedFunctionVO";
-import {ArrayTools} from "../ArrayTools";
-import {IFunctionArguments} from "../../index";
+import { IDelayedFunctionVO } from "./IDelayedFunctionVO";
+import { ArrayTools } from "../ArrayTools";
+import { IFunctionArguments } from "../../other/IFunctionArguments";
 
 export class FunctionTools {
 

@@ -1,6 +1,6 @@
 ﻿import { AssociativeArrayEvent } from "./AssociativeArrayEvent";
 import { BaseEventDispatcher } from "../../event/eventdispatcher/BaseEventDispatcher";
-import { ObjectTools } from "../..";
+import { ObjectTools } from "../../tools/ObjectTools";
 
 export class AssociativeArray<ValueType> extends BaseEventDispatcher {
     protected map: { [key: string]: ValueType };

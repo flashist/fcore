@@ -1,5 +1,6 @@
-﻿import {UniqueTools} from "../tools/UniqueTools";
-import {ArrayTools} from "..";
+﻿import { ArrayTools } from "../tools/ArrayTools";
+import { UniqueTools } from "../tools/UniqueTools";
+
 export class Dictionary<KeyType, ItemType> {
 
     protected map: any;
