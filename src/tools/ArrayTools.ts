@@ -1,5 +1,5 @@
 ﻿import { NumberTools } from "./NumberTools";
-import {ObjectTools} from "./ObjectTools";
+import { ObjectTools } from "./ObjectTools";
 
 export class ArrayTools {
     protected static REMOVE_COUNT_ALL: number = -1;
